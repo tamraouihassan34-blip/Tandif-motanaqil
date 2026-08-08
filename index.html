@@ -3,97 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>تنظيف متنقل | خدمة التنظيف بأيت ملول وأكادير</title>
+  <title>تنظيف متنقل</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
-
     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
       background: #f4f8fb;
       color: #222;
-      line-height: 1.7;
+      text-align: center;
     }
 
     header {
-      background: linear-gradient(135deg, #087f8c, #00a896);
+      background: #087f8c;
       color: white;
-      padding: 35px 20px;
-      text-align: center;
+      padding: 35px 15px;
     }
 
     header h1 {
+      margin: 0;
       font-size: 38px;
-      margin-bottom: 10px;
     }
 
     header p {
-      font-size: 19px;
+      font-size: 20px;
     }
 
-    .hero {
-      text-align: center;
-      padding: 50px 20px;
-      background: white;
-    }
-
-    .hero h2 {
-      color: #087f8c;
-      font-size: 30px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: auto;
-      color: #555;
-    }
-
-    .services {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .services h2 {
-      text-align: center;
-      color: #087f8c;
-      margin-bottom: 30px;
-      font-size: 28px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    .section {
+      padding: 30px 15px;
     }
 
     .card {
       background: white;
-      padding: 25px;
+      margin: 15px auto;
+      padding: 20px;
+      max-width: 500px;
       border-radius: 15px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
-    .card .icon {
-      font-size: 45px;
-      margin-bottom: 10px;
-    }
-
-    .card h3 {
+    .card h2 {
       color: #087f8c;
-      margin-bottom: 8px;
     }
 
-    .contact {
-      background: #087f8c;
+    .whatsapp {
+      display: inline-block;
+      background: #25D366;
       color: white;
-      text-align: center;
-      padding: 45
+      text-decoration: none;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    footer {
+      background: #12343b;
+      color: white;
+      padding: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🧽 تنظيف متنقل</h1>
+    <p>خدمة تنظيف احترافية حتى لباب دارك 🚗</p>
+  </header>
+
+  <div class="section">
+
+    <div class="card">
+      <h2>🧹 خدماتنا</h2>
+      <p>تنظيف المنازل</p>
+      <p>تنظيف السيارات</p>
+      <p>تنظيف الصالونات والزرابي</p>
+      <p>تنظيف شامل حسب الطلب</p>
+    </div>
+
+    <div class="card">
+      <h2>📍 الخدمة متنقلة</h2>
+      <p>
+        ما تحتاجش تمشي بعيد، حنا اللي كنجيبو الخدمة حتى عندك.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>📞 احجز موعدك</h2>
+      <p>تواصل معنا مباشرة عبر واتساب</p>
+
+      <a class="whatsapp"
+         href="https://wa.me/212641577185"
+         target="_blank">
+        💬 تواصل عبر واتساب
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 تنظيف متنقل - جميع الحقوق محفوظة</p>
+  </footer>
+
+</body>
+</html>
