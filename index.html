@@ -8,9 +8,9 @@
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -19,46 +19,70 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #080808;
+      background: #08080c;
       color: white;
       line-height: 1.8;
+      overflow-x: hidden;
     }
 
-    /* HEADER */
-    header {
+    /* ===== HERO ===== */
+
+    .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 30px 20px;
+      padding: 30px 15px;
+
       background:
-        radial-gradient(circle at top, #333 0%, #111 45%, #050505 100%);
+        radial-gradient(circle at 50% 20%, #33215c 0%, transparent 35%),
+        radial-gradient(circle at 20% 80%, #172d4d 0%, transparent 30%),
+        linear-gradient(145deg, #050507, #11111a, #050507);
     }
+
+    .hero-content {
+      width: 100%;
+      max-width: 850px;
+    }
+
+    /* LOGO */
 
     .logo {
-      font-size: clamp(45px, 12vw, 90px);
+      font-size: clamp(42px, 11vw, 85px);
       font-weight: 900;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
+      white-space: nowrap;
       margin-bottom: 10px;
+
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #d9b86c,
+        #ffffff
+      );
+
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      text-shadow: 0 0 35px rgba(217,184,108,0.15);
     }
 
-    .tm {
-      color: #bdbdbd;
-    }
-
-    .tagline {
+    .official {
+      color: #d9b86c;
       font-size: 20px;
-      color: #aaa;
-      margin-bottom: 35px;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
     }
 
-    .hero-text {
+    .hero-description {
       max-width: 650px;
       margin: auto;
-      color: #ddd;
+      color: #d2d2d2;
       font-size: 18px;
     }
+
+    /* BUTTONS */
 
     .buttons {
       margin-top: 35px;
@@ -70,174 +94,117 @@
 
     .btn {
       display: inline-block;
-      padding: 14px 28px;
+      min-width: 170px;
+      padding: 14px 25px;
       border-radius: 40px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 17px;
+      font-size: 16px;
       transition: 0.3s;
     }
 
-    .btn-main {
-      background: white;
-      color: black;
+    .btn-gold {
+      color: #111;
+      background: linear-gradient(135deg, #f5d77a, #c49a3a);
+      box-shadow: 0 8px 25px rgba(212,170,70,0.25);
     }
 
-    .btn-dark {
-      border: 1px solid #555;
+    .btn-outline {
       color: white;
+      border: 1px solid #555;
+      background: rgba(255,255,255,0.04);
     }
 
     .btn:hover {
-      transform: translateY(-4px);
-      opacity: 0.85;
+      transform: translateY(-5px);
     }
 
-    /* SECTIONS */
+    /* ===== SECTIONS ===== */
+
     section {
-      padding: 80px 20px;
+      padding: 80px 18px;
       text-align: center;
     }
 
-    .light {
-      background: #f5f5f5;
-      color: #111;
+    .section-dark {
+      background: #0a0a0f;
     }
 
-    .dark {
-      background: #0d0d0d;
+    .section-light {
+      background: #11111a;
     }
 
-    .title {
-      font-size: 38px;
-      margin-bottom: 15px;
+    .section-title {
+      font-size: 36px;
+      margin-bottom: 12px;
     }
 
-    .subtitle {
-      color: #777;
+    .gold {
+      color: #d9b86c;
+    }
+
+    .section-description {
+      color: #999;
       max-width: 650px;
       margin: 0 auto 45px;
     }
 
-    .dark .subtitle {
-      color: #aaa;
-    }
+    /* ===== CARDS ===== */
 
-    /* CARDS */
     .cards {
-      max-width: 1000px;
+      max-width: 1050px;
       margin: auto;
+
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+
       gap: 22px;
     }
 
     .card {
-      padding: 30px 22px;
-      border-radius: 20px;
-      background: white;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.08);
-      transition: 0.3s;
-    }
+      padding: 32px 22px;
+      border-radius: 22px;
 
-    .dark .card {
-      background: #181818;
-      color: white;
-      border: 1px solid #292929;
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255,255,255,0.07),
+          rgba(255,255,255,0.02)
+        );
+
+      border: 1px solid rgba(255,255,255,0.08);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,0.25);
+
+      transition: 0.35s;
     }
 
     .card:hover {
-      transform: translateY(-7px);
+      transform: translateY(-8px);
+      border-color: rgba(217,184,108,0.5);
     }
 
     .icon {
       font-size: 42px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .card h3 {
       font-size: 22px;
       margin-bottom: 10px;
+      color: #f1d78a;
     }
 
     .card p {
-      color: #777;
-    }
-
-    .dark .card p {
       color: #aaa;
+      font-size: 15px;
     }
 
-    /* ABOUT */
+    /* ===== ABOUT ===== */
+
     .about {
-      max-width: 800px;
+      max-width: 750px;
       margin: auto;
-      font-size: 19px;
-    }
-
-    /* CONTACT */
-    .contact-box {
-      max-width: 600px;
-      margin: auto;
-      padding: 35px 20px;
-      border-radius: 25px;
-      background: #171717;
-      border: 1px solid #292929;
-    }
-
-    .phone {
-      font-size: 25px;
-      font-weight: bold;
-      margin: 20px 0;
-      direction: ltr;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #050505;
-      text-align: center;
-      padding: 35px 20px;
-      color: #888;
-    }
-
-    footer strong {
-      color: white;
-    }
-
-    @media (max-width: 600px) {
-      .logo {
-        font-size: 48px;
-      }
-
-      .title {
-        font-size: 30px;
-      }
-
-      section {
-        padding: 60px 15px;
-      }
-
-      .hero-text {
-        font-size: 16px;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- HERO -->
-  <header id="home">
-    <div>
-
-      <div class="logo">
-        Tamraoui-<span class="tm">TM</span>
-      </div>
-
-      <div class="tagline">
-        الموقع الرسمي
-      </div>
-
-      <p class="hero-text">
-        مرحباً بكم في Tamraoui-TM.
-        مساحة خاصة بالم
+      font
