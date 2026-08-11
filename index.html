@@ -1,210 +1,53 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Tamraoui-TM | الموقع الرسمي</title>
+<title>Tamraoui-TM | الموقع الرسمي</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+body{
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f5f5f5;
+  color:#171717;
+  line-height:1.8;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #08080c;
-      color: white;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
+.hero{
+  background:linear-gradient(135deg,#111,#292929);
+  color:white;
+  text-align:center;
+  padding:65px 20px 55px;
+  border-bottom:5px solid #d4af37;
+}
 
-    /* ===== HERO ===== */
+.logo{
+  font-size:48px;
+  font-weight:900;
+  letter-spacing:2px;
+}
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 30px 15px;
+.logo span{
+  color:#d4af37;
+}
 
-      background:
-        radial-gradient(circle at 50% 20%, #33215c 0%, transparent 35%),
-        radial-gradient(circle at 20% 80%, #172d4d 0%, transparent 30%),
-        linear-gradient(145deg, #050507, #11111a, #050507);
-    }
+.badge{
+  display:inline-block;
+  margin-top:15px;
+  padding:7px 18px;
+  border:1px solid #d4af37;
+  border-radius:30px;
+  color:#d4af37;
+  font-weight:bold;
+}
 
-    .hero-content {
-      width: 100%;
-      max-width: 850px;
-    }
-
-    /* LOGO */
-
-    .logo {
-      font-size: clamp(42px, 11vw, 85px);
-      font-weight: 900;
-      letter-spacing: 2px;
-      white-space: nowrap;
-      margin-bottom: 10px;
-
-      background: linear-gradient(
-        90deg,
-        #ffffff,
-        #d9b86c,
-        #ffffff
-      );
-
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-
-      text-shadow: 0 0 35px rgba(217,184,108,0.15);
-    }
-
-    .official {
-      color: #d9b86c;
-      font-size: 20px;
-      margin-bottom: 25px;
-      letter-spacing: 2px;
-    }
-
-    .hero-description {
-      max-width: 650px;
-      margin: auto;
-      color: #d2d2d2;
-      font-size: 18px;
-    }
-
-    /* BUTTONS */
-
-    .buttons {
-      margin-top: 35px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .btn {
-      display: inline-block;
-      min-width: 170px;
-      padding: 14px 25px;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: 0.3s;
-    }
-
-    .btn-gold {
-      color: #111;
-      background: linear-gradient(135deg, #f5d77a, #c49a3a);
-      box-shadow: 0 8px 25px rgba(212,170,70,0.25);
-    }
-
-    .btn-outline {
-      color: white;
-      border: 1px solid #555;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .btn:hover {
-      transform: translateY(-5px);
-    }
-
-    /* ===== SECTIONS ===== */
-
-    section {
-      padding: 80px 18px;
-      text-align: center;
-    }
-
-    .section-dark {
-      background: #0a0a0f;
-    }
-
-    .section-light {
-      background: #11111a;
-    }
-
-    .section-title {
-      font-size: 36px;
-      margin-bottom: 12px;
-    }
-
-    .gold {
-      color: #d9b86c;
-    }
-
-    .section-description {
-      color: #999;
-      max-width: 650px;
-      margin: 0 auto 45px;
-    }
-
-    /* ===== CARDS ===== */
-
-    .cards {
-      max-width: 1050px;
-      margin: auto;
-
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-
-      gap: 22px;
-    }
-
-    .card {
-      padding: 32px 22px;
-      border-radius: 22px;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,0.07),
-          rgba(255,255,255,0.02)
-        );
-
-      border: 1px solid rgba(255,255,255,0.08);
-
-      box-shadow:
-        0 15px 40px rgba(0,0,0,0.25);
-
-      transition: 0.35s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(217,184,108,0.5);
-    }
-
-    .icon {
-      font-size: 42px;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: #f1d78a;
-    }
-
-    .card p {
-      color: #aaa;
-      font-size: 15px;
-    }
-
-    /* ===== ABOUT ===== */
-
-    .about {
-      max-width: 750px;
-      margin: auto;
-      font
+.hero p{
+  margin-top:20px;
+ 
