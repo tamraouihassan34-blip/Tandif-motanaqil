@@ -3,65 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تنظيف متنقل</title>
+  <title>Tamraoui-TM</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f8fb;
+      background: #f4f4f4;
       color: #222;
       text-align: center;
     }
 
     header {
-      background: #087f8c;
+      background: #111;
       color: white;
-      padding: 35px 15px;
+      padding: 35px 20px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 38px;
+      font-size: 42px;
+      letter-spacing: 2px;
     }
 
     header p {
-      font-size: 20px;
+      font-size: 18px;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    .hero {
+      padding: 60px 20px;
+      background: white;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 25px;
+      margin: 8px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      background: #111;
+    }
+
+    .btn:hover {
+      opacity: 0.8;
     }
 
     .section {
-      padding: 30px 15px;
+      padding: 45px 20px;
+    }
+
+    .section h2 {
+      font-size: 28px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 25px;
     }
 
     .card {
       background: white;
-      margin: 15px auto;
-      padding: 20px;
-      max-width: 500px;
+      width: 280px;
+      padding: 25px;
       border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
     }
 
-    .card h2 {
-      color: #087f8c;
+    .card h3 {
+      font-size: 21px;
     }
 
-    .whatsapp {
-      display: inline-block;
-      background: #25D366;
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      border-radius: 30px;
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 15px;
+    .card p {
+      line-height: 1.7;
+      color: #555;
     }
 
     footer {
-      background: #12343b;
+      background: #111;
       color: white;
-      padding: 20px;
+      padding: 25px;
       margin-top: 30px;
     }
   </style>
@@ -70,42 +117,60 @@
 <body>
 
   <header>
-    <h1>🧽 تنظيف متنقل</h1>
-    <p>خدمة تنظيف احترافية حتى لباب دارك 🚗</p>
+    <h1>Tamraoui-TM</h1>
+    <p>الموقع الرسمي</p>
   </header>
 
-  <div class="section">
+  <section class="hero">
+    <h2>مرحبا بكم في Tamraoui-TM</h2>
 
-    <div class="card">
-      <h2>🧹 خدماتنا</h2>
-      <p>تنظيف المنازل</p>
-      <p>تنظيف السيارات</p>
-      <p>تنظيف الصالونات والزرابي</p>
-      <p>تنظيف شامل حسب الطلب</p>
-    </div>
+    <p>
+      مساحة خاصة بالمحتوى والأفكار والمشاريع.
+      تابع جديد Tamraoui-TM وكن دائما على الموعد.
+    </p>
 
-    <div class="card">
-      <h2>📍 الخدمة متنقلة</h2>
-      <p>
-        ما تحتاجش تمشي بعيد، حنا اللي كنجيبو الخدمة حتى عندك.
-      </p>
-    </div>
+    <div class="buttons">
+      <a class="btn" href="https://www.tiktok.com/" target="_blank">
+        TikTok
+      </a>
 
-    <div class="card">
-      <h2>📞 احجز موعدك</h2>
-      <p>تواصل معنا مباشرة عبر واتساب</p>
-
-      <a class="whatsapp"
-         href="https://wa.me/212641577185"
-         target="_blank">
-        💬 تواصل عبر واتساب
+      <a class="btn" href="https://wa.me/212641577185" target="_blank">
+        WhatsApp
       </a>
     </div>
+  </section>
 
-  </div>
+  <section class="section">
+    <h2>ماذا نقدم؟</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>🎬 المحتوى</h3>
+        <p>
+          محتوى متنوع ومميز باسم Tamraoui-TM.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>💡 الأفكار</h3>
+        <p>
+          أفكار ومشاريع جديدة نسعى لتطويرها باستمرار.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📱 التواصل</h3>
+        <p>
+          تواصل معنا مباشرة عبر WhatsApp وتابعنا على TikTok.
+        </p>
+      </div>
+
+    </div>
+  </section>
 
   <footer>
-    <p>© 2026 تنظيف متنقل - جميع الحقوق محفوظة</p>
+    © 2026 Tamraoui-TM — جميع الحقوق محفوظة
   </footer>
 
 </body>
