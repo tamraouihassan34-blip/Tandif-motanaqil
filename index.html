@@ -3,444 +3,946 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>من الصفر للمليون</title>
+
+<title>دارك | منصة العقارات المغربية</title>
+
+<meta name="description" content="منصة مغربية لبيع وشراء وكراء العقارات">
 
 <style>
-*{box-sizing:border-box}
-body{
+*{
+  box-sizing:border-box;
   margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:linear-gradient(135deg,#07111f,#101c32,#07111f);
-  color:#fff;
-  min-height:100vh;
+  padding:0;
 }
-.container{
-  width:min(950px,94%);
-  margin:auto;
-  padding:20px 0 40px;
-}
-header{
-  text-align:center;
-  padding:20px 10px;
-}
-.logo{
-  font-size:42px;
-  font-weight:900;
-  color:#ffd54a;
-  text-shadow:0 0 20px #ffb30055;
-}
-.subtitle{color:#aebbd0;margin-top:8px}
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin:15px 0;
-}
-.stat{
-  background:#111f34;
-  border:1px solid #263b59;
-  border-radius:18px;
-  padding:16px;
-  text-align:center;
-}
-.stat span{
-  display:block;
-  color:#8fa4bf;
-  font-size:13px;
-  margin-bottom:7px;
-}
-.stat strong{font-size:23px;color:#ffd54a}
 
-.progress-box{
-  background:#111f34;
-  border-radius:18px;
-  padding:15px;
-  margin-bottom:18px;
-  border:1px solid #263b59;
+body{
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f5f7fa;
+  color:#172033;
 }
-.progress-top{
+
+header{
+  background:#0b132b;
+  color:white;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 3px 15px #0002;
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:16px 20px;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  margin-bottom:9px;
+  gap:20px;
 }
-.progress{
-  height:14px;
-  background:#24344d;
-  border-radius:20px;
-  overflow:hidden;
+
+.logo{
+  font-size:28px;
+  font-weight:bold;
+  color:#f5b942;
 }
-.progress div{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#ffd54a,#ff9800);
-  transition:.4s;
+
+.logo span{
+  color:white;
+}
+
+.nav a{
+  color:white;
+  text-decoration:none;
+  margin:0 8px;
+  font-weight:bold;
+}
+
+.btn{
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-main{
+  background:#f5b942;
+  color:#111;
+}
+
+.btn-dark{
+  background:#0b132b;
+  color:white;
+}
+
+.hero{
+  background:
+  linear-gradient(#071124bb,#071124bb),
+  url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80")
+  center/cover;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px 15px;
+}
+
+.hero-content{
+  width:100%;
+  max-width:900px;
+  color:white;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  font-size:19px;
+  margin-bottom:30px;
+  color:#eee;
+}
+
+.search-box{
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr auto;
+  gap:10px;
+  box-shadow:0 10px 35px #0004;
+}
+
+.search-box select,
+.search-box input{
+  padding:14px;
+  border:1px solid #ddd;
+  border-radius:9px;
+  outline:none;
+  width:100%;
+}
+
+section{
+  max-width:1200px;
+  margin:60px auto;
+  padding:0 20px;
 }
 
 .section-title{
-  font-size:23px;
-  margin:25px 0 12px;
-}
-.cards{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-.card{
-  background:linear-gradient(145deg,#14243b,#0d192c);
-  border:1px solid #29415f;
-  border-radius:20px;
-  padding:18px;
-}
-.card h3{margin:0 0 8px}
-.card p{color:#9fb0c5;line-height:1.6}
-button{
-  width:100%;
-  border:0;
-  padding:13px;
-  border-radius:13px;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  background:linear-gradient(135deg,#ffd54a,#ff9800);
-  color:#111;
-  transition:.2s;
-}
-button:hover{transform:translateY(-2px)}
-button:disabled{
-  opacity:.4;
-  cursor:not-allowed;
-  transform:none;
-}
-.small{
-  color:#91a5bf;
-  font-size:13px;
-  margin-top:8px;
-}
-.message{
   text-align:center;
-  background:#12243a;
-  border:1px solid #2a4666;
-  border-radius:16px;
-  padding:14px;
-  margin-top:18px;
-  color:#dce7f5;
-}
-.reset{
-  margin-top:25px;
-  background:#18263a;
-  color:#ff8790;
-  border:1px solid #55313b;
-}
-footer{
-  text-align:center;
-  margin-top:35px;
-  color:#657991;
-  font-size:13px;
+  margin-bottom:30px;
 }
 
-@media(max-width:650px){
-  .stats{grid-template-columns:1fr}
-  .cards{grid-template-columns:1fr}
-  .logo{font-size:34px}
+.section-title h2{
+  font-size:32px;
+  margin-bottom:8px;
+}
+
+.section-title p{
+  color:#687386;
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.feature{
+  background:white;
+  padding:30px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 5px 20px #0000000d;
+}
+
+.feature-icon{
+  font-size:40px;
+  margin-bottom:15px;
+}
+
+.feature h3{
+  margin-bottom:10px;
+}
+
+.feature p{
+  color:#687386;
+  line-height:1.7;
+}
+
+.properties{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 6px 22px #00000012;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+.card-img{
+  height:220px;
+  width:100%;
+  object-fit:cover;
+}
+
+.card-body{
+  padding:18px;
+}
+
+.badge{
+  display:inline-block;
+  background:#f5b942;
+  padding:6px 10px;
+  border-radius:7px;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.card h3{
+  font-size:21px;
+  margin-bottom:8px;
+}
+
+.location{
+  color:#687386;
+  margin-bottom:12px;
+}
+
+.price{
+  font-size:22px;
+  font-weight:bold;
+  color:#0b132b;
+  margin-bottom:15px;
+}
+
+.card-actions{
+  display:flex;
+  gap:8px;
+}
+
+.card-actions .btn{
+  flex:1;
+}
+
+.add-box{
+  background:linear-gradient(135deg,#0b132b,#172a55);
+  color:white;
+  padding:45px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.add-box h2{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.add-box p{
+  color:#dbe2f0;
+}
+
+footer{
+  background:#0b132b;
+  color:white;
+  padding:45px 20px;
+  margin-top:60px;
+}
+
+.footer-content{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  gap:40px;
+}
+
+footer h3{
+  margin-bottom:15px;
+  color:#f5b942;
+}
+
+footer p,
+footer a{
+  color:#c8cedb;
+  line-height:2;
+  text-decoration:none;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:2000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-box{
+  background:white;
+  max-width:550px;
+  width:100%;
+  border-radius:18px;
+  padding:25px;
+}
+
+.modal-box h2{
+  margin-bottom:20px;
+}
+
+.form-group{
+  margin-bottom:15px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:9px;
+}
+
+.form-group textarea{
+  height:100px;
+  resize:none;
+}
+
+.close{
+  float:left;
+  font-size:25px;
+  cursor:pointer;
+}
+
+@media(max-width:850px){
+
+  .nav{
+    flex-wrap:wrap;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:35px;
+  }
+
+  .search-box{
+    grid-template-columns:1fr;
+  }
+
+  .features,
+  .properties{
+    grid-template-columns:1fr;
+  }
+
+  .add-box{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .footer-content{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
 <header>
-  <div class="logo">💰 من الصفر للمليون</div>
-  <div class="subtitle">ابدأ بـ 0 درهم... وابني ثروتك بنفسك 🚀</div>
+  <div class="nav">
+
+    <div class="logo">
+      دارك<span> العقارية</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#properties">العقارات</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#contact">تواصل معنا</a>
+    </div>
+
+    <button class="btn btn-main" onclick="openModal()">
+      + نشر عقار
+    </button>
+
+  </div>
 </header>
 
-<div class="stats">
-  <div class="stat">
-    <span>💵 الرصيد</span>
-    <strong id="money">0 DH</strong>
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <h1>لقى دارك بسهولة 🏠</h1>
+
+    <p>
+      منصة مغربية لبيع وشراء وكراء العقارات
+    </p>
+
+    <div class="search-box">
+
+      <select id="typeSearch">
+        <option value="">نوع العقار</option>
+        <option value="شقة">شقة</option>
+        <option value="فيلا">فيلا</option>
+        <option value="أرض">أرض</option>
+        <option value="محل تجاري">محل تجاري</option>
+      </select>
+
+      <select id="citySearch">
+        <option value="">المدينة</option>
+        <option value="الدار البيضاء">الدار البيضاء</option>
+        <option value="أكادير">أكادير</option>
+        <option value="مراكش">مراكش</option>
+        <option value="الرباط">الرباط</option>
+        <option value="طنجة">طنجة</option>
+      </select>
+
+      <input
+        type="number"
+        id="priceSearch"
+        placeholder="أقصى ميزانية بالدرهم"
+      >
+
+      <button class="btn btn-main" onclick="searchProperties()">
+        بحث 🔎
+      </button>
+
+    </div>
+
   </div>
 
-  <div class="stat">
-    <span>⭐ المستوى</span>
-    <strong id="level">1</strong>
+</section>
+
+
+<section id="services">
+
+  <div class="section-title">
+
+    <h2>علاش دارك؟</h2>
+
+    <p>
+      كلشي اللي محتاج باش تلقى العقار المناسب
+    </p>
+
   </div>
 
-  <div class="stat">
-    <span>🏆 صافي الثروة</span>
-    <strong id="wealth">0 DH</strong>
-  </div>
-</div>
+  <div class="features">
 
-<div class="progress-box">
-  <div class="progress-top">
-    <span>التقدم نحو المليون</span>
-    <span id="percent">0%</span>
-  </div>
-  <div class="progress">
-    <div id="progressBar"></div>
-  </div>
-</div>
+    <div class="feature">
+      <div class="feature-icon">🏠</div>
+      <h3>عقارات متنوعة</h3>
+      <p>
+        شقق، فيلات، أراضي ومحلات تجارية من مختلف المدن المغربية.
+      </p>
+    </div>
 
-<div class="section-title">💼 طرق الربح</div>
+    <div class="feature">
+      <div class="feature-icon">🔎</div>
+      <h3>بحث سريع</h3>
+      <p>
+        قلب على العقار حسب المدينة والنوع والميزانية.
+      </p>
+    </div>
 
-<div class="cards">
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <h3>تواصل مباشر</h3>
+      <p>
+        تواصل مباشرة مع صاحب الإعلان عبر WhatsApp.
+      </p>
+    </div>
 
-  <div class="card">
-    <h3>🧹 خدمة تنظيف</h3>
-    <p>خدم مهمة تنظيف واربح المال.</p>
-    <button onclick="work(80)">خدم الآن +80 DH</button>
-  </div>
-
-  <div class="card">
-    <h3>📦 توصيل طلب</h3>
-    <p>وصل طلب للزبون وخذ أجرتك.</p>
-    <button onclick="work(120)">توصيل +120 DH</button>
   </div>
 
-  <div class="card">
-    <h3>🛒 بيع سلعة</h3>
-    <p>قلب على صفقة رابحة وبعها.</p>
-    <button onclick="work(250)">بيع +250 DH</button>
+</section>
+
+
+<section id="properties">
+
+  <div class="section-title">
+
+    <h2>عقارات مميزة ⭐</h2>
+
+    <p>
+      أفضل العروض المنشورة على المنصة
+    </p>
+
   </div>
 
-  <div class="card">
-    <h3>💼 مشروع صغير</h3>
-    <p>استثمر وقتك وخذ ربحاً أكبر.</p>
-    <button onclick="work(500)">مشروع +500 DH</button>
+  <div class="properties" id="propertyList">
+
+    <div class="card property"
+         data-type="شقة"
+         data-city="الدار البيضاء"
+         data-price="850000">
+
+      <img
+        class="card-img"
+        src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80"
+        alt="شقة للبيع"
+      >
+
+      <div class="card-body">
+
+        <span class="badge">مميز</span>
+
+        <h3>شقة عصرية للبيع</h3>
+
+        <div class="location">
+          📍 الدار البيضاء
+        </div>
+
+        <div class="price">
+          850,000 درهم
+        </div>
+
+        <div class="card-actions">
+
+          <button class="btn btn-dark"
+                  onclick="contactWhatsApp('شقة عصرية للبيع')">
+            WhatsApp
+          </button>
+
+          <button class="btn btn-main"
+                  onclick="showDetails('شقة عصرية للبيع')">
+            التفاصيل
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card property"
+         data-type="فيلا"
+         data-city="مراكش"
+         data-price="2300000">
+
+      <img
+        class="card-img"
+        src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80"
+        alt="فيلا للبيع"
+      >
+
+      <div class="card-body">
+
+        <span class="badge">مميز</span>
+
+        <h3>فيلا فاخرة</h3>
+
+        <div class="location">
+          📍 مراكش
+        </div>
+
+        <div class="price">
+          2,300,000 درهم
+        </div>
+
+        <div class="card-actions">
+
+          <button class="btn btn-dark"
+                  onclick="contactWhatsApp('فيلا فاخرة')">
+            WhatsApp
+          </button>
+
+          <button class="btn btn-main"
+                  onclick="showDetails('فيلا فاخرة')">
+            التفاصيل
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="card property"
+         data-type="أرض"
+         data-city="أكادير"
+         data-price="500000">
+
+      <img
+        class="card-img"
+        src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80"
+        alt="أرض للبيع"
+      >
+
+      <div class="card-body">
+
+        <span class="badge">فرصة</span>
+
+        <h3>أرض للبيع</h3>
+
+        <div class="location">
+          📍 أكادير
+        </div>
+
+        <div class="price">
+          500,000 درهم
+        </div>
+
+        <div class="card-actions">
+
+          <button class="btn btn-dark"
+                  onclick="contactWhatsApp('أرض للبيع')">
+            WhatsApp
+          </button>
+
+          <button class="btn btn-main"
+                  onclick="showDetails('أرض للبيع')">
+            التفاصيل
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 
-</div>
+</section>
 
-<div class="section-title">🏠 الاستثمارات</div>
 
-<div class="cards">
+<section>
 
-  <div class="card">
-    <h3>🏚️ غرفة صغيرة</h3>
-    <p>استثمار بسيط يعطيك دخلاً إضافياً.</p>
-    <button id="houseBtn" onclick="buyHouse()">
-      شراء بـ 5000 DH
+  <div class="add-box">
+
+    <div>
+
+      <h2>عندك عقار للبيع أو الكراء؟</h2>
+
+      <p>
+        نشر إعلانك وخليه يوصل للناس اللي كيقلبو على عقار.
+      </p>
+
+    </div>
+
+    <button class="btn btn-main" onclick="openModal()">
+      نشر عقاري الآن
     </button>
-    <div class="small" id="houseStatus">غير مملوكة</div>
+
   </div>
 
-  <div class="card">
-    <h3>🚗 سيارة للعمل</h3>
-    <p>تزيد أرباح المهام اليومية.</p>
-    <button id="carBtn" onclick="buyCar()">
-      شراء بـ 15000 DH
-    </button>
-    <div class="small" id="carStatus">غير مملوكة</div>
+</section>
+
+
+<footer id="contact">
+
+  <div class="footer-content">
+
+    <div>
+
+      <h3>دارك العقارية</h3>
+
+      <p>
+        منصة عقارية مغربية تساعدك تلقى العقار المناسب بسهولة.
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>روابط</h3>
+
+      <p><a href="#home">الرئيسية</a></p>
+      <p><a href="#properties">العقارات</a></p>
+      <p><a href="#services">خدماتنا</a></p>
+
+    </div>
+
+    <div>
+
+      <h3>تواصل معنا</h3>
+
+      <p>📱 WhatsApp: 06XXXXXXXX</p>
+      <p>📧 contact@dark.ma</p>
+
+    </div>
+
   </div>
 
-  <div class="card">
-    <h3>🏢 محل تجاري</h3>
-    <p>مشروع يعطيك دخلاً يومياً.</p>
-    <button id="shopBtn" onclick="buyShop()">
-      شراء بـ 50000 DH
-    </button>
-    <div class="small" id="shopStatus">غير مملوك</div>
-  </div>
-
-  <div class="card">
-    <h3>🏙️ عقار فاخر</h3>
-    <p>استثمار كبير يقربك من المليون.</p>
-    <button id="villaBtn" onclick="buyVilla()">
-      شراء بـ 200000 DH
-    </button>
-    <div class="small" id="villaStatus">غير مملوك</div>
-  </div>
-
-</div>
-
-<div class="message" id="message">
-  🚀 البداية من الصفر... أول خطوة هي أنك تربح أول 80 درهم!
-</div>
-
-<button class="reset" onclick="resetGame()">🗑️ إعادة اللعبة من البداية</button>
-
-<footer>
-  من الصفر للمليون © 2026
 </footer>
 
+
+<div class="modal" id="modal">
+
+  <div class="modal-box">
+
+    <span class="close" onclick="closeModal()">×</span>
+
+    <h2>نشر عقار جديد</h2>
+
+    <div class="form-group">
+
+      <label>عنوان العقار</label>
+
+      <input
+        type="text"
+        id="propertyTitle"
+        placeholder="مثلاً: شقة للبيع"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>نوع العقار</label>
+
+      <select id="propertyType">
+
+        <option>شقة</option>
+        <option>فيلا</option>
+        <option>أرض</option>
+        <option>محل تجاري</option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>المدينة</label>
+
+      <input
+        type="text"
+        id="propertyCity"
+        placeholder="مثلاً: أكادير"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>الثمن</label>
+
+      <input
+        type="number"
+        id="propertyPrice"
+        placeholder="الثمن بالدرهم"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label>الوصف</label>
+
+      <textarea
+        id="propertyDescription"
+        placeholder="وصف العقار..."
+      ></textarea>
+
+    </div>
+
+    <button class="btn btn-main"
+            style="width:100%"
+            onclick="submitProperty()">
+
+      إرسال الإعلان
+
+    </button>
+
+  </div>
+
 </div>
+
 
 <script>
 
-let game = JSON.parse(localStorage.getItem("millionGame")) || {
-  money:0,
-  wealth:0,
-  level:1,
-  house:false,
-  car:false,
-  shop:false,
-  villa:false
+const WHATSAPP_NUMBER = "212600000000";
+
+
+function openModal(){
+
+  document.getElementById("modal").style.display="flex";
+
+}
+
+
+function closeModal(){
+
+  document.getElementById("modal").style.display="none";
+
+}
+
+
+function contactWhatsApp(property){
+
+  const message =
+    "السلام عليكم، مهتم بالعقار: " + property;
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url,"_blank");
+
+}
+
+
+function showDetails(property){
+
+  alert(
+    "العقار: " +
+    property +
+    "\n\nللمزيد من المعلومات تواصل معنا عبر WhatsApp."
+  );
+
+}
+
+
+function searchProperties(){
+
+  const type =
+    document.getElementById("typeSearch").value;
+
+  const city =
+    document.getElementById("citySearch").value;
+
+  const maxPrice =
+    document.getElementById("priceSearch").value;
+
+  const properties =
+    document.querySelectorAll(".property");
+
+  let found = 0;
+
+  properties.forEach(property => {
+
+    const propertyType =
+      property.dataset.type;
+
+    const propertyCity =
+      property.dataset.city;
+
+    const propertyPrice =
+      Number(property.dataset.price);
+
+    let visible = true;
+
+    if(type && propertyType !== type){
+      visible = false;
+    }
+
+    if(city && propertyCity !== city){
+      visible = false;
+    }
+
+    if(maxPrice &&
+       propertyPrice > Number(maxPrice)){
+      visible = false;
+    }
+
+    property.style.display =
+      visible ? "block" : "none";
+
+    if(visible) found++;
+
+  });
+
+  document
+    .getElementById("properties")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+  if(found === 0){
+
+    alert("ما لقيناش عقار مطابق للبحث حالياً.");
+
+  }
+
+}
+
+
+function submitProperty(){
+
+  const title =
+    document.getElementById("propertyTitle").value;
+
+  const city =
+    document.getElementById("propertyCity").value;
+
+  const price =
+    document.getElementById("propertyPrice").value;
+
+  if(!title || !city || !price){
+
+    alert("عافاك عمر المعلومات الأساسية.");
+
+    return;
+
+  }
+
+  const message =
+    "السلام عليكم، بغيت ننشر عقار في موقع دارك.\n\n" +
+    "العقار: " + title + "\n" +
+    "المدينة: " + city + "\n" +
+    "الثمن: " + price + " درهم";
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url,"_blank");
+
+  closeModal();
+
+}
+
+
+window.onclick = function(event){
+
+  const modal =
+    document.getElementById("modal");
+
+  if(event.target === modal){
+
+    closeModal();
+
+  }
+
 };
-
-function save(){
-  localStorage.setItem("millionGame",JSON.stringify(game));
-}
-
-function formatMoney(n){
-  return Math.floor(n).toLocaleString("fr-FR") + " DH";
-}
-
-function update(){
-
-  document.getElementById("money").textContent =
-    formatMoney(game.money);
-
-  document.getElementById("wealth").textContent =
-    formatMoney(game.wealth);
-
-  game.level =
-    Math.max(1,Math.floor(game.wealth/10000)+1);
-
-  document.getElementById("level").textContent =
-    game.level;
-
-  let percent =
-    Math.min(100,(game.wealth/1000000)*100);
-
-  document.getElementById("percent").textContent =
-    percent.toFixed(1)+"%";
-
-  document.getElementById("progressBar").style.width =
-    percent+"%";
-
-  document.getElementById("houseStatus").textContent =
-    game.house ? "✅ مملوكة" : "غير مملوكة";
-
-  document.getElementById("carStatus").textContent =
-    game.car ? "✅ مملوكة" : "غير مملوكة";
-
-  document.getElementById("shopStatus").textContent =
-    game.shop ? "✅ مملوك" : "غير مملوك";
-
-  document.getElementById("villaStatus").textContent =
-    game.villa ? "✅ مملوك" : "غير مملوك";
-
-  document.getElementById("houseBtn").disabled =
-    game.house;
-
-  document.getElementById("carBtn").disabled =
-    game.car;
-
-  document.getElementById("shopBtn").disabled =
-    game.shop;
-
-  document.getElementById("villaBtn").disabled =
-    game.villa;
-
-  save();
-
-  if(game.wealth >= 1000000){
-    document.getElementById("message").textContent =
-      "🏆 مبروك! وصلتي للمليون! أنت الآن مليونير 💰🔥";
-  }
-}
-
-function notify(text){
-  document.getElementById("message").textContent = text;
-}
-
-function work(amount){
-
-  let bonus = game.car ? 1.5 : 1;
-
-  let earned = Math.floor(amount*bonus);
-
-  game.money += earned;
-  game.wealth += earned;
-
-  notify("💰 ربحتي "+formatMoney(earned)+"! استمر!");
-
-  update();
-}
-
-function buyHouse(){
-
-  if(game.money < 5000){
-    notify("❌ خاصك 5000 DH باش تشري الغرفة.");
-    return;
-  }
-
-  game.money -= 5000;
-  game.wealth += 5000;
-  game.house = true;
-
-  notify("🏚️ مبروك! شريتي أول عقار ديالك!");
-  update();
-}
-
-function buyCar(){
-
-  if(game.money < 15000){
-    notify("❌ خاصك 15000 DH باش تشري السيارة.");
-    return;
-  }
-
-  game.money -= 15000;
-  game.wealth += 15000;
-  game.car = true;
-
-  notify("🚗 مبروك! السيارة غادي تزيد أرباحك!");
-  update();
-}
-
-function buyShop(){
-
-  if(game.money < 50000){
-    notify("❌ خاصك 50000 DH باش تشري المحل.");
-    return;
-  }
-
-  game.money -= 50000;
-  game.wealth += 50000;
-  game.shop = true;
-
-  notify("🏢 مبروك! أصبح عندك محل تجاري!");
-  update();
-}
-
-function buyVilla(){
-
-  if(game.money < 200000){
-    notify("❌ خاصك 200000 DH باش تشري العقار الفاخر.");
-    return;
-  }
-
-  game.money -= 200000;
-  game.wealth += 200000;
-  game.villa = true;
-
-  notify("🏙️ مبروك! شريتي عقار فاخر!");
-  update();
-}
-
-function resetGame(){
-
-  if(confirm("واش متأكد بغيتي تمسح التقدم كامل؟")){
-
-    localStorage.removeItem("millionGame");
-
-    game = {
-      money:0,
-      wealth:0,
-      level:1,
-      house:false,
-      car:false,
-      shop:false,
-      villa:false
-    };
-
-    notify("🔄 رجعنا للبداية! بالتوفيق.");
-    update();
-  }
-}
-
-update();
 
 </script>
 
