@@ -1,83 +1,448 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="منصة بيع وشراء العقارات - منازل، شقق، أراضي ومحلات">
-  <title>دارك | بيع وشراء العقارات</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>من الصفر للمليون</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, Tahoma, sans-serif;
-    }
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:linear-gradient(135deg,#07111f,#101c32,#07111f);
+  color:#fff;
+  min-height:100vh;
+}
+.container{
+  width:min(950px,94%);
+  margin:auto;
+  padding:20px 0 40px;
+}
+header{
+  text-align:center;
+  padding:20px 10px;
+}
+.logo{
+  font-size:42px;
+  font-weight:900;
+  color:#ffd54a;
+  text-shadow:0 0 20px #ffb30055;
+}
+.subtitle{color:#aebbd0;margin-top:8px}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:15px 0;
+}
+.stat{
+  background:#111f34;
+  border:1px solid #263b59;
+  border-radius:18px;
+  padding:16px;
+  text-align:center;
+}
+.stat span{
+  display:block;
+  color:#8fa4bf;
+  font-size:13px;
+  margin-bottom:7px;
+}
+.stat strong{font-size:23px;color:#ffd54a}
 
-    body {
-      background: #f5f7fa;
-      color: #172033;
-      line-height: 1.7;
-    }
+.progress-box{
+  background:#111f34;
+  border-radius:18px;
+  padding:15px;
+  margin-bottom:18px;
+  border:1px solid #263b59;
+}
+.progress-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:9px;
+}
+.progress{
+  height:14px;
+  background:#24344d;
+  border-radius:20px;
+  overflow:hidden;
+}
+.progress div{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ffd54a,#ff9800);
+  transition:.4s;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+.section-title{
+  font-size:23px;
+  margin:25px 0 12px;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+.card{
+  background:linear-gradient(145deg,#14243b,#0d192c);
+  border:1px solid #29415f;
+  border-radius:20px;
+  padding:18px;
+}
+.card h3{margin:0 0 8px}
+.card p{color:#9fb0c5;line-height:1.6}
+button{
+  width:100%;
+  border:0;
+  padding:13px;
+  border-radius:13px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ffd54a,#ff9800);
+  color:#111;
+  transition:.2s;
+}
+button:hover{transform:translateY(-2px)}
+button:disabled{
+  opacity:.4;
+  cursor:not-allowed;
+  transform:none;
+}
+.small{
+  color:#91a5bf;
+  font-size:13px;
+  margin-top:8px;
+}
+.message{
+  text-align:center;
+  background:#12243a;
+  border:1px solid #2a4666;
+  border-radius:16px;
+  padding:14px;
+  margin-top:18px;
+  color:#dce7f5;
+}
+.reset{
+  margin-top:25px;
+  background:#18263a;
+  color:#ff8790;
+  border:1px solid #55313b;
+}
+footer{
+  text-align:center;
+  margin-top:35px;
+  color:#657991;
+  font-size:13px;
+}
 
-    /* HEADER */
-    header {
-      background: #0d1b2a;
-      color: white;
-      padding: 18px 6%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 3px 15px rgba(0,0,0,.15);
-    }
+@media(max-width:650px){
+  .stats{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+  .logo{font-size:34px}
+}
+</style>
+</head>
 
-    .logo {
-      font-size: 27px;
-      font-weight: bold;
-      color: #d4af37;
-    }
+<body>
 
-    .logo span {
-      color: white;
-    }
+<div class="container">
 
-    nav {
-      display: flex;
-      gap: 25px;
-    }
+<header>
+  <div class="logo">💰 من الصفر للمليون</div>
+  <div class="subtitle">ابدأ بـ 0 درهم... وابني ثروتك بنفسك 🚀</div>
+</header>
 
-    nav a {
-      color: white;
-      font-weight: bold;
-      transition: .3s;
-    }
+<div class="stats">
+  <div class="stat">
+    <span>💵 الرصيد</span>
+    <strong id="money">0 DH</strong>
+  </div>
 
-    nav a:hover {
-      color: #d4af37;
-    }
+  <div class="stat">
+    <span>⭐ المستوى</span>
+    <strong id="level">1</strong>
+  </div>
 
-    /* HERO */
-    .hero {
-      min-height: 500px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 60px 20px;
-      background:
-        linear-gradient(rgba(13,27,42,.82), rgba(13,27,42,.82)),
-        url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80")
-        center/cover;
-    }
+  <div class="stat">
+    <span>🏆 صافي الثروة</span>
+    <strong id="wealth">0 DH</strong>
+  </div>
+</div>
 
-    .hero-content {
-      max-width: 850px;
-      color
+<div class="progress-box">
+  <div class="progress-top">
+    <span>التقدم نحو المليون</span>
+    <span id="percent">0%</span>
+  </div>
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+</div>
+
+<div class="section-title">💼 طرق الربح</div>
+
+<div class="cards">
+
+  <div class="card">
+    <h3>🧹 خدمة تنظيف</h3>
+    <p>خدم مهمة تنظيف واربح المال.</p>
+    <button onclick="work(80)">خدم الآن +80 DH</button>
+  </div>
+
+  <div class="card">
+    <h3>📦 توصيل طلب</h3>
+    <p>وصل طلب للزبون وخذ أجرتك.</p>
+    <button onclick="work(120)">توصيل +120 DH</button>
+  </div>
+
+  <div class="card">
+    <h3>🛒 بيع سلعة</h3>
+    <p>قلب على صفقة رابحة وبعها.</p>
+    <button onclick="work(250)">بيع +250 DH</button>
+  </div>
+
+  <div class="card">
+    <h3>💼 مشروع صغير</h3>
+    <p>استثمر وقتك وخذ ربحاً أكبر.</p>
+    <button onclick="work(500)">مشروع +500 DH</button>
+  </div>
+
+</div>
+
+<div class="section-title">🏠 الاستثمارات</div>
+
+<div class="cards">
+
+  <div class="card">
+    <h3>🏚️ غرفة صغيرة</h3>
+    <p>استثمار بسيط يعطيك دخلاً إضافياً.</p>
+    <button id="houseBtn" onclick="buyHouse()">
+      شراء بـ 5000 DH
+    </button>
+    <div class="small" id="houseStatus">غير مملوكة</div>
+  </div>
+
+  <div class="card">
+    <h3>🚗 سيارة للعمل</h3>
+    <p>تزيد أرباح المهام اليومية.</p>
+    <button id="carBtn" onclick="buyCar()">
+      شراء بـ 15000 DH
+    </button>
+    <div class="small" id="carStatus">غير مملوكة</div>
+  </div>
+
+  <div class="card">
+    <h3>🏢 محل تجاري</h3>
+    <p>مشروع يعطيك دخلاً يومياً.</p>
+    <button id="shopBtn" onclick="buyShop()">
+      شراء بـ 50000 DH
+    </button>
+    <div class="small" id="shopStatus">غير مملوك</div>
+  </div>
+
+  <div class="card">
+    <h3>🏙️ عقار فاخر</h3>
+    <p>استثمار كبير يقربك من المليون.</p>
+    <button id="villaBtn" onclick="buyVilla()">
+      شراء بـ 200000 DH
+    </button>
+    <div class="small" id="villaStatus">غير مملوك</div>
+  </div>
+
+</div>
+
+<div class="message" id="message">
+  🚀 البداية من الصفر... أول خطوة هي أنك تربح أول 80 درهم!
+</div>
+
+<button class="reset" onclick="resetGame()">🗑️ إعادة اللعبة من البداية</button>
+
+<footer>
+  من الصفر للمليون © 2026
+</footer>
+
+</div>
+
+<script>
+
+let game = JSON.parse(localStorage.getItem("millionGame")) || {
+  money:0,
+  wealth:0,
+  level:1,
+  house:false,
+  car:false,
+  shop:false,
+  villa:false
+};
+
+function save(){
+  localStorage.setItem("millionGame",JSON.stringify(game));
+}
+
+function formatMoney(n){
+  return Math.floor(n).toLocaleString("fr-FR") + " DH";
+}
+
+function update(){
+
+  document.getElementById("money").textContent =
+    formatMoney(game.money);
+
+  document.getElementById("wealth").textContent =
+    formatMoney(game.wealth);
+
+  game.level =
+    Math.max(1,Math.floor(game.wealth/10000)+1);
+
+  document.getElementById("level").textContent =
+    game.level;
+
+  let percent =
+    Math.min(100,(game.wealth/1000000)*100);
+
+  document.getElementById("percent").textContent =
+    percent.toFixed(1)+"%";
+
+  document.getElementById("progressBar").style.width =
+    percent+"%";
+
+  document.getElementById("houseStatus").textContent =
+    game.house ? "✅ مملوكة" : "غير مملوكة";
+
+  document.getElementById("carStatus").textContent =
+    game.car ? "✅ مملوكة" : "غير مملوكة";
+
+  document.getElementById("shopStatus").textContent =
+    game.shop ? "✅ مملوك" : "غير مملوك";
+
+  document.getElementById("villaStatus").textContent =
+    game.villa ? "✅ مملوك" : "غير مملوك";
+
+  document.getElementById("houseBtn").disabled =
+    game.house;
+
+  document.getElementById("carBtn").disabled =
+    game.car;
+
+  document.getElementById("shopBtn").disabled =
+    game.shop;
+
+  document.getElementById("villaBtn").disabled =
+    game.villa;
+
+  save();
+
+  if(game.wealth >= 1000000){
+    document.getElementById("message").textContent =
+      "🏆 مبروك! وصلتي للمليون! أنت الآن مليونير 💰🔥";
+  }
+}
+
+function notify(text){
+  document.getElementById("message").textContent = text;
+}
+
+function work(amount){
+
+  let bonus = game.car ? 1.5 : 1;
+
+  let earned = Math.floor(amount*bonus);
+
+  game.money += earned;
+  game.wealth += earned;
+
+  notify("💰 ربحتي "+formatMoney(earned)+"! استمر!");
+
+  update();
+}
+
+function buyHouse(){
+
+  if(game.money < 5000){
+    notify("❌ خاصك 5000 DH باش تشري الغرفة.");
+    return;
+  }
+
+  game.money -= 5000;
+  game.wealth += 5000;
+  game.house = true;
+
+  notify("🏚️ مبروك! شريتي أول عقار ديالك!");
+  update();
+}
+
+function buyCar(){
+
+  if(game.money < 15000){
+    notify("❌ خاصك 15000 DH باش تشري السيارة.");
+    return;
+  }
+
+  game.money -= 15000;
+  game.wealth += 15000;
+  game.car = true;
+
+  notify("🚗 مبروك! السيارة غادي تزيد أرباحك!");
+  update();
+}
+
+function buyShop(){
+
+  if(game.money < 50000){
+    notify("❌ خاصك 50000 DH باش تشري المحل.");
+    return;
+  }
+
+  game.money -= 50000;
+  game.wealth += 50000;
+  game.shop = true;
+
+  notify("🏢 مبروك! أصبح عندك محل تجاري!");
+  update();
+}
+
+function buyVilla(){
+
+  if(game.money < 200000){
+    notify("❌ خاصك 200000 DH باش تشري العقار الفاخر.");
+    return;
+  }
+
+  game.money -= 200000;
+  game.wealth += 200000;
+  game.villa = true;
+
+  notify("🏙️ مبروك! شريتي عقار فاخر!");
+  update();
+}
+
+function resetGame(){
+
+  if(confirm("واش متأكد بغيتي تمسح التقدم كامل؟")){
+
+    localStorage.removeItem("millionGame");
+
+    game = {
+      money:0,
+      wealth:0,
+      level:1,
+      house:false,
+      car:false,
+      shop:false,
+      villa:false
+    };
+
+    notify("🔄 رجعنا للبداية! بالتوفيق.");
+    update();
+  }
+}
+
+update();
+
+</script>
+
+</body>
+</html>
