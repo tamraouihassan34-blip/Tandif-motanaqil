@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>عقاري | العقارات في المغرب</title>
+<title>عقاري | بيع وشراء وكراء العقارات في المغرب</title>
 
-<meta name="description" content="عقاري - بيع وشراء وكراء العقارات في المغرب">
+<meta
+  name="description"
+  content="عقاري - منصة لبيع وشراء وكراء العقارات في المغرب"
+/>
 
 <style>
+
+/* =========================
+   GENERAL
+========================= */
+
 *{
   box-sizing:border-box;
 }
@@ -22,6 +32,7 @@ body{
   font-family:Arial,Tahoma,sans-serif;
   background:#f5f7fb;
   color:#172033;
+  line-height:1.6;
 }
 
 button,
@@ -35,19 +46,27 @@ button{
   cursor:pointer;
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER
+========================= */
+
 header{
   background:#071a35;
-  color:#fff;
+  color:white;
   padding:15px 5%;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
 .nav{
   max-width:1200px;
   margin:auto;
   display:flex;
-  justify-content:space-between;
   align-items:center;
+  justify-content:space-between;
   gap:20px;
 }
 
@@ -55,6 +74,7 @@ header{
   color:#f5c451;
   font-size:28px;
   font-weight:bold;
+  white-space:nowrap;
 }
 
 nav{
@@ -65,7 +85,7 @@ nav{
 }
 
 nav a{
-  color:#fff;
+  color:white;
   text-decoration:none;
   font-weight:bold;
 }
@@ -74,10 +94,14 @@ nav a:hover{
   color:#f5c451;
 }
 
-/* HERO */
+
+/* =========================
+   HERO
+========================= */
+
 .hero{
   background:linear-gradient(135deg,#071a35,#17638d);
-  color:#fff;
+  color:white;
   text-align:center;
   padding:55px 5%;
 }
@@ -93,9 +117,8 @@ nav a:hover{
 }
 
 .add-btn{
-  display:inline-block;
   background:#20c76b;
-  color:#fff;
+  color:white;
   border:0;
   padding:14px 25px;
   border-radius:12px;
@@ -108,16 +131,29 @@ nav a:hover{
   background:#159b50;
 }
 
-/* SEARCH */
+
+/* =========================
+   SEARCH
+========================= */
+
 .search{
   max-width:1100px;
   margin:auto;
-  background:#fff;
+  background:white;
   padding:15px;
   border-radius:16px;
+
   display:grid;
-  grid-template-columns:1.5fr 1fr 1fr 1fr 100px;
+
+  grid-template-columns:
+  1.5fr
+  1fr
+  1fr
+  1fr
+  100px;
+
   gap:10px;
+
   box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
@@ -128,7 +164,13 @@ nav a:hover{
   border:1px solid #ddd;
   border-radius:10px;
   outline:none;
-  background:#fff;
+  background:white;
+  font-size:15px;
+}
+
+.search input:focus,
+.search select:focus{
+  border-color:#17638d;
 }
 
 .search button{
@@ -139,7 +181,11 @@ nav a:hover{
   font-weight:bold;
 }
 
-/* SECTIONS */
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container{
   max-width:1200px;
   margin:auto;
@@ -160,7 +206,11 @@ nav a:hover{
   color:#667085;
 }
 
-/* CARDS */
+
+/* =========================
+   PROPERTY CARDS
+========================= */
+
 .cards{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -168,10 +218,15 @@ nav a:hover{
 }
 
 .card{
-  background:#fff;
+  background:white;
   border-radius:18px;
   overflow:hidden;
   box-shadow:0 6px 22px rgba(0,0,0,.08);
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
 }
 
 .card-img{
@@ -198,6 +253,7 @@ nav a:hover{
 
 .card h3{
   margin:10px 0 5px;
+  font-size:20px;
 }
 
 .price{
@@ -216,6 +272,7 @@ nav a:hover{
   color:#667085;
   font-size:14px;
   margin-top:8px;
+  min-height:45px;
 }
 
 .actions{
@@ -234,27 +291,36 @@ nav a:hover{
 
 .whatsapp{
   background:#20c76b;
-  color:#fff;
+  color:white;
 }
 
 .details{
   background:#123e67;
-  color:#fff;
+  color:white;
+}
+
+.whatsapp:hover,
+.details:hover{
+  opacity:.9;
 }
 
 .empty{
-  background:#fff;
-  padding:40px;
+  background:white;
+  padding:45px 20px;
   border-radius:15px;
   text-align:center;
   grid-column:1/-1;
   color:#667085;
 }
 
-/* ADD */
+
+/* =========================
+   ADD SECTION
+========================= */
+
 .add-section{
   background:linear-gradient(135deg,#071a35,#17638d);
-  color:#fff;
+  color:white;
   text-align:center;
   padding:40px 20px;
   border-radius:20px;
@@ -278,10 +344,14 @@ nav a:hover{
   font-size:16px;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
   background:#071a35;
-  color:#fff;
+  color:white;
   padding:35px 5%;
 }
 
@@ -302,34 +372,58 @@ footer{
   text-decoration:none;
 }
 
-/* MODAL */
+
+/* =========================
+   OVERLAY
+========================= */
+
 .overlay{
   display:none;
+
   position:fixed;
   inset:0;
+
   background:rgba(0,0,0,.75);
+
   z-index:5000;
+
   padding:15px;
+
   overflow:auto;
 }
+
+
+/* =========================
+   BOX
+========================= */
 
 .box{
   width:100%;
   max-width:600px;
+
   margin:30px auto;
-  background:#fff;
+
+  background:white;
+
   border-radius:20px;
+
   padding:25px;
+
   position:relative;
 }
 
 .close{
   position:absolute;
+
   left:12px;
   top:7px;
+
   border:0;
+
   background:none;
+
   font-size:32px;
+
   color:#555;
 }
 
@@ -338,6 +432,11 @@ footer{
   color:#071a35;
   margin-top:0;
 }
+
+
+/* =========================
+   FORM
+========================= */
 
 .form-group{
   margin-bottom:15px;
@@ -353,20 +452,39 @@ footer{
 .form-group select,
 .form-group textarea{
   width:100%;
+
   padding:13px;
+
   border:1px solid #ddd;
+
   border-radius:10px;
+
   outline:none;
+
+  background:white;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:#17638d;
 }
 
 .submit{
   width:100%;
+
   border:0;
+
   background:#20c76b;
-  color:#fff;
+
+  color:white;
+
   padding:15px;
+
   border-radius:12px;
+
   font-size:17px;
+
   font-weight:bold;
 }
 
@@ -374,11 +492,19 @@ footer{
   background:#159b50;
 }
 
-/* IMAGES */
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+
 .preview{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+  repeat(3,1fr);
+
   gap:8px;
+
   margin-top:10px;
 }
 
@@ -387,42 +513,70 @@ footer{
   height:90px;
   object-fit:cover;
   border-radius:8px;
+  background:#eee;
 }
 
-/* DETAILS */
+
+/* =========================
+   DETAILS
+========================= */
+
 .detail-img{
   width:100%;
   height:280px;
+
   object-fit:cover;
+
   border-radius:12px;
+
+  background:#ddd;
 }
 
 .detail-whatsapp{
   display:block;
+
   margin-top:20px;
+
   background:#20c76b;
-  color:#fff;
+
+  color:white;
+
   text-decoration:none;
+
   text-align:center;
+
   padding:14px;
+
   border-radius:10px;
+
   font-weight:bold;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:900px){
 
   .search{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+    1fr
+    1fr;
   }
 
   .cards{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+    repeat(2,1fr);
   }
 
 }
 
 @media(max-width:650px){
+
+  header{
+    padding:13px 4%;
+  }
 
   .nav{
     flex-direction:column;
@@ -465,16 +619,29 @@ footer{
   }
 
   .preview{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+    repeat(2,1fr);
+  }
+
+  .box{
+    margin:15px auto;
+    padding:20px;
   }
 
 }
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- HEADER -->
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
 
   <div class="nav">
@@ -484,10 +651,23 @@ footer{
     </div>
 
     <nav>
-      <a href="#home">الرئيسية</a>
-      <a href="#properties">العقارات</a>
-      <a href="#add">أضف عقارك</a>
-      <a href="#contact">اتصل بنا</a>
+
+      <a href="#home">
+        الرئيسية
+      </a>
+
+      <a href="#properties">
+        العقارات
+      </a>
+
+      <a href="#add">
+        أضف عقارك
+      </a>
+
+      <a href="#contact">
+        اتصل بنا
+      </a>
+
     </nav>
 
   </div>
@@ -495,8 +675,14 @@ footer{
 </header>
 
 
-<!-- HERO -->
-<section class="hero" id="home">
+<!-- =========================
+     HERO
+========================= -->
+
+<section
+  class="hero"
+  id="home"
+>
 
   <h1>
     لقِ عقارك المناسب بسهولة
@@ -513,6 +699,9 @@ footer{
     🏠 أضف عقارك
   </button>
 
+
+  <!-- SEARCH -->
+
   <div class="search">
 
     <input
@@ -520,6 +709,7 @@ footer{
       type="text"
       placeholder="شنو كتقلب؟"
     >
+
 
     <select id="typeFilter">
 
@@ -549,6 +739,7 @@ footer{
 
     </select>
 
+
     <select id="operationFilter">
 
       <option value="">
@@ -565,13 +756,17 @@ footer{
 
     </select>
 
+
     <input
       id="cityFilter"
       type="text"
       placeholder="المدينة"
     >
 
-    <button onclick="searchProperties()">
+
+    <button
+      onclick="searchProperties()"
+    >
       🔎 بحث
     </button>
 
@@ -580,7 +775,10 @@ footer{
 </section>
 
 
-<!-- PROPERTIES -->
+<!-- =========================
+     REAL PROPERTIES
+========================= -->
+
 <section
   class="container"
   id="properties"
@@ -589,14 +787,15 @@ footer{
   <div class="title">
 
     <h2>
-      ⭐ عقارات مميزة
+      🏠 العقارات المتوفرة
     </h2>
 
     <p>
-      اكتشف أفضل العروض العقارية
+      اكتشف العقارات المعروضة للبيع والكراء في المغرب
     </p>
 
   </div>
+
 
   <div
     class="cards"
@@ -606,7 +805,10 @@ footer{
 </section>
 
 
-<!-- ADD -->
+<!-- =========================
+     ADD PROPERTY
+========================= -->
+
 <section
   class="container"
   id="add"
@@ -622,7 +824,9 @@ footer{
       أرسل معلومات عقارك وسنتواصل معك عبر WhatsApp.
     </p>
 
-    <button onclick="openForm()">
+    <button
+      onclick="openForm()"
+    >
       ➕ أضف عقارك الآن
     </button>
 
@@ -631,7 +835,10 @@ footer{
 </section>
 
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer id="contact">
 
   <div class="footer-inner">
@@ -647,6 +854,7 @@ footer{
       </p>
 
     </div>
+
 
     <div>
 
@@ -673,7 +881,10 @@ footer{
 </footer>
 
 
-<!-- PROPERTY FORM -->
+<!-- =========================
+     ADD PROPERTY FORM
+========================= -->
+
 <div
   class="overlay"
   id="formOverlay"
@@ -684,15 +895,24 @@ footer{
     <button
       class="close"
       onclick="closeForm()"
+      aria-label="إغلاق"
     >
       ×
     </button>
+
 
     <h2>
       🏠 أضف عقارك
     </h2>
 
-    <p style="text-align:center;color:#667085;margin-bottom:20px;">
+
+    <p
+      style="
+      text-align:center;
+      color:#667085;
+      margin-bottom:20px;
+      "
+    >
       عمر المعلومات وسنتواصل معك عبر WhatsApp
     </p>
 
@@ -848,9 +1068,16 @@ footer{
         onchange="previewImages()"
       >
 
-      <small style="color:#667085;">
-        اختار الصور من الهاتف.
+      <small
+        style="
+        color:#667085;
+        display:block;
+        margin-top:5px;
+        "
+      >
+        يمكنك اختيار عدة صور.
       </small>
+
 
       <div
         id="preview"
@@ -872,7 +1099,10 @@ footer{
 </div>
 
 
-<!-- DETAILS -->
+<!-- =========================
+     PROPERTY DETAILS
+========================= -->
+
 <div
   class="overlay"
   id="detailsOverlay"
@@ -887,11 +1117,15 @@ footer{
     <button
       class="close"
       onclick="closeDetails()"
+      aria-label="إغلاق"
     >
       ×
     </button>
 
-    <div id="detailsContent"></div>
+
+    <div
+      id="detailsContent"
+    ></div>
 
   </div>
 
@@ -904,159 +1138,207 @@ footer{
    WHATSAPP
 ========================= */
 
-var whatsappNumber = "212641577185";
+var whatsappNumber =
+  "212641577185";
 
 
 /* =========================
-   PROPERTIES
+   REAL PROPERTY LIST
 ========================= */
 
 var properties = [
 
   {
     id:1,
-    title:"شقة عصرية للبيع",
+
+    title:"شقة للبيع في أكادير",
+
     type:"شقة",
+
     operation:"بيع",
+
     city:"أكادير",
+
     price:"850,000",
-    image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
-    description:"شقة جميلة بتصميم عصري ومناسبة للسكن العائلي."
+
+    image:
+    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+
+    description:
+    "شقة عصرية مناسبة للسكن العائلي."
   },
+
 
   {
     id:2,
-    title:"فيلا فاخرة للبيع",
-    type:"فيلا",
-    operation:"بيع",
-    city:"مراكش",
-    price:"2,400,000",
-    image:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80",
-    description:"فيلا واسعة بتجهيزات ممتازة وموقع مميز."
-  },
 
-  {
-    id:3,
-    title:"محل تجاري للكراء",
-    type:"محل تجاري",
-    operation:"كراء",
-    city:"الدار البيضاء",
-    price:"7,000 / شهر",
-    image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
-    description:"محل تجاري مناسب لمختلف الأنشطة."
-  },
+    title:"منزل للبيع في أيت ملول",
 
-  {
-    id:4,
-    title:"منزل عائلي للبيع",
     type:"منزل",
+
     operation:"بيع",
+
     city:"أيت ملول",
+
     price:"620,000",
-    image:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80",
-    description:"منزل مناسب للعائلة في موقع هادئ."
-  },
 
-  {
-    id:5,
-    title:"أرض للبيع",
-    type:"أرض",
-    operation:"بيع",
-    city:"تارودانت",
-    price:"350,000",
-    image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
-    description:"قطعة أرض مناسبة للاستثمار."
-  },
+    image:
+    "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80",
 
-  {
-    id:6,
-    title:"شقة للكراء",
-    type:"شقة",
-    operation:"كراء",
-    city:"أكادير",
-    price:"3,500 / شهر",
-    image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80",
-    description:"شقة مجهزة ومناسبة للسكن."
+    description:
+    "منزل عائلي في موقع هادئ."
   }
 
 ];
 
 
 /* =========================
-   DISPLAY
+   SHOW PROPERTIES
 ========================= */
 
 function showProperties(list){
 
-  var box = document.getElementById("propertyList");
+  var box =
+    document.getElementById(
+      "propertyList"
+    );
 
-  if(list.length === 0){
+
+  if(
+    !list ||
+    list.length === 0
+  ){
 
     box.innerHTML =
+
       "<div class='empty'>" +
+
       "🔎<br><br>" +
+
       "ما لقيناش عقارات مطابقة للبحث." +
+
       "</div>";
 
     return;
   }
 
+
   var html = "";
 
-  for(var i=0;i<list.length;i++){
 
-    var p = list[i];
+  for(
+    var i=0;
+    i<list.length;
+    i++
+  ){
+
+    var p =
+      list[i];
+
 
     html +=
+
       "<div class='card'>" +
 
         "<img " +
+
         "class='card-img' " +
-        "src='" + p.image + "' " +
-        "alt='" + p.title + "' " +
-        "onerror=\"this.style.background='#dfe5ec';this.removeAttribute('src')\">" +
+
+        "src='" +
+        p.image +
+        "' " +
+
+        "alt='" +
+        p.title +
+        "' " +
+
+        "onerror=\"this.style.display='none'\">" +
+
 
         "<div class='card-body'>" +
 
-          "<span class='badge'>⭐ مميز</span>" +
+          "<span class='badge'>" +
+
+          "⭐ عقار" +
+
+          "</span>" +
+
 
           "<h3>" +
+
           p.title +
+
           "</h3>" +
 
+
           "<div class='price'>" +
+
           p.price +
+
           " درهم" +
+
           "</div>" +
+
 
           "<div class='location'>" +
+
           "📍 " +
+
           p.city +
+
           " • " +
+
           p.type +
+
           " • " +
+
           p.operation +
+
           "</div>" +
 
+
           "<div class='description'>" +
+
           p.description +
+
           "</div>" +
+
 
           "<div class='actions'>" +
 
-            "<button " +
-            "class='whatsapp' " +
-            "onclick='contactProperty(" + p.id + ")'>" +
-            "📱 WhatsApp" +
-            "</button>" +
 
             "<button " +
-            "class='details' " +
-            "onclick='showDetails(" + p.id + ")'>" +
-            "التفاصيل" +
+
+            "class='whatsapp' " +
+
+            "onclick='contactProperty(" +
+
+            p.id +
+
+            ")'>" +
+
+            "📱 WhatsApp" +
+
             "</button>" +
+
+
+            "<button " +
+
+            "class='details' " +
+
+            "onclick='showDetails(" +
+
+            p.id +
+
+            ")'>" +
+
+            "التفاصيل" +
+
+            "</button>" +
+
 
           "</div>" +
+
 
         "</div>" +
 
@@ -1064,21 +1346,31 @@ function showProperties(list){
 
   }
 
-  box.innerHTML = html;
+
+  box.innerHTML =
+    html;
 
 }
 
 
 /* =========================
-   FIND
+   FIND PROPERTY
 ========================= */
 
 function findProperty(id){
 
-  for(var i=0;i<properties.length;i++){
+  for(
+    var i=0;
+    i<properties.length;
+    i++
+  ){
 
-    if(properties[i].id === id){
+    if(
+      properties[i].id === id
+    ){
+
       return properties[i];
+
     }
 
   }
@@ -1089,31 +1381,55 @@ function findProperty(id){
 
 
 /* =========================
-   PROPERTY WHATSAPP
+   CONTACT PROPERTY
 ========================= */
 
 function contactProperty(id){
 
-  var p = findProperty(id);
+  var p =
+    findProperty(id);
+
 
   if(!p){
     return;
   }
 
-  var text =
+
+  var message =
+
     "السلام عليكم، مهتم بهذا العقار من منصة عقاري:\n\n" +
-    "🏠 العقار: " + p.title + "\n" +
-    "📍 المدينة: " + p.city + "\n" +
-    "🏠 النوع: " + p.type + "\n" +
-    "🔄 العملية: " + p.operation + "\n" +
-    "💰 الثمن: " + p.price + " درهم";
+
+    "🏠 العقار: " +
+    p.title +
+
+    "\n📍 المدينة: " +
+    p.city +
+
+    "\n🏠 النوع: " +
+    p.type +
+
+    "\n🔄 العملية: " +
+    p.operation +
+
+    "\n💰 الثمن: " +
+    p.price +
+    " درهم";
+
 
   window.open(
+
     "https://wa.me/" +
+
     whatsappNumber +
+
     "?text=" +
-    encodeURIComponent(text),
+
+    encodeURIComponent(
+      message
+    ),
+
     "_blank"
+
   );
 
 }
@@ -1126,53 +1442,112 @@ function contactProperty(id){
 function searchProperties(){
 
   var text =
-    document.getElementById("searchText")
+
+    document
+    .getElementById(
+      "searchText"
+    )
     .value
     .toLowerCase()
     .trim();
+
 
   var type =
-    document.getElementById("typeFilter").value;
+
+    document
+    .getElementById(
+      "typeFilter"
+    )
+    .value;
+
 
   var operation =
-    document.getElementById("operationFilter").value;
+
+    document
+    .getElementById(
+      "operationFilter"
+    )
+    .value;
+
 
   var city =
-    document.getElementById("cityFilter")
+
+    document
+    .getElementById(
+      "cityFilter"
+    )
     .value
     .toLowerCase()
     .trim();
+
 
   var results = [];
 
-  for(var i=0;i<properties.length;i++){
 
-    var p = properties[i];
+  for(
+    var i=0;
+    i<properties.length;
+    i++
+  ){
 
-    var matchText =
+    var p =
+      properties[i];
+
+
+    var textMatch =
+
       text === "" ||
-      p.title.toLowerCase().indexOf(text) !== -1 ||
-      p.city.toLowerCase().indexOf(text) !== -1 ||
-      p.type.toLowerCase().indexOf(text) !== -1 ||
-      p.description.toLowerCase().indexOf(text) !== -1;
 
-    var matchType =
+      p.title
+      .toLowerCase()
+      .indexOf(text) !== -1 ||
+
+      p.city
+      .toLowerCase()
+      .indexOf(text) !== -1 ||
+
+      p.type
+      .toLowerCase()
+      .indexOf(text) !== -1 ||
+
+      p.description
+      .toLowerCase()
+      .indexOf(text) !== -1;
+
+
+    var typeMatch =
+
       type === "" ||
+
       p.type === type;
 
-    var matchOperation =
+
+    var operationMatch =
+
       operation === "" ||
+
       p.operation === operation;
 
-    var matchCity =
+
+    var cityMatch =
+
       city === "" ||
-      p.city.toLowerCase().indexOf(city) !== -1;
+
+      p.city
+      .toLowerCase()
+      .indexOf(city) !== -1;
+
 
     if(
-      matchText &&
-      matchType &&
-      matchOperation &&
-      matchCity
+
+      textMatch &&
+
+      typeMatch &&
+
+      operationMatch &&
+
+      cityMatch
+
     ){
 
       results.push(p);
@@ -1181,10 +1556,16 @@ function searchProperties(){
 
   }
 
-  showProperties(results);
+
+  showProperties(
+    results
+  );
+
 
   document
-    .getElementById("properties")
+    .getElementById(
+      "properties"
+    )
     .scrollIntoView({
       behavior:"smooth"
     });
@@ -1198,18 +1579,32 @@ function searchProperties(){
 
 function openForm(){
 
-  document.getElementById("formOverlay").style.display = "block";
+  document
+    .getElementById(
+      "formOverlay"
+    )
+    .style.display =
+    "block";
 
-  document.body.style.overflow = "hidden";
+
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
 function closeForm(){
 
-  document.getElementById("formOverlay").style.display = "none";
+  document
+    .getElementById(
+      "formOverlay"
+    )
+    .style.display =
+    "none";
 
-  document.body.style.overflow = "";
+
+  document.body.style.overflow =
+    "";
 
 }
 
@@ -1221,43 +1616,87 @@ function closeForm(){
 function previewImages(){
 
   var input =
-    document.getElementById("propertyImages");
+    document.getElementById(
+      "propertyImages"
+    );
+
 
   var preview =
-    document.getElementById("preview");
+    document.getElementById(
+      "preview"
+    );
 
-  preview.innerHTML = "";
 
-  if(!input.files){
+  preview.innerHTML =
+    "";
+
+
+  if(
+    !input.files ||
+    input.files.length === 0
+  ){
+
     return;
+
   }
 
-  for(var i=0;i<input.files.length;i++){
 
-    var file = input.files[i];
+  for(
+    var i=0;
+    i<input.files.length;
+    i++
+  ){
 
-    if(!file.type.startsWith("image/")){
+    var file =
+      input.files[i];
+
+
+    if(
+      !file.type.startsWith(
+        "image/"
+      )
+    ){
+
       continue;
+
     }
 
-    var reader = new FileReader();
 
-    reader.onload = function(e){
+    var reader =
+      new FileReader();
 
-      var img =
-        document.createElement("img");
 
-      img.src = e.target.result;
+    reader.onload =
+      function(event){
 
-      img.alt = "صورة العقار";
+        var img =
+          document.createElement(
+            "img"
+          );
 
-      document
-        .getElementById("preview")
-        .appendChild(img);
 
-    };
+        img.src =
+          event.target.result;
 
-    reader.readAsDataURL(file);
+
+        img.alt =
+          "صورة العقار";
+
+
+        document
+          .getElementById(
+            "preview"
+          )
+          .appendChild(
+            img
+          );
+
+      };
+
+
+    reader.readAsDataURL(
+      file
+    );
 
   }
 
@@ -1265,59 +1704,108 @@ function previewImages(){
 
 
 /* =========================
-   SEND FORM
+   SEND PROPERTY
 ========================= */
 
 function sendWhatsApp(){
 
   var name =
-    document.getElementById("ownerName")
+
+    document
+    .getElementById(
+      "ownerName"
+    )
     .value
     .trim();
+
 
   var phone =
-    document.getElementById("ownerPhone")
+
+    document
+    .getElementById(
+      "ownerPhone"
+    )
     .value
     .trim();
+
 
   var type =
-    document.getElementById("propertyType")
+
+    document
+    .getElementById(
+      "propertyType"
+    )
     .value;
+
 
   var operation =
-    document.getElementById("propertyOperation")
+
+    document
+    .getElementById(
+      "propertyOperation"
+    )
     .value;
 
+
   var city =
-    document.getElementById("propertyCity")
+
+    document
+    .getElementById(
+      "propertyCity"
+    )
     .value
     .trim();
+
 
   var price =
-    document.getElementById("propertyPrice")
+
+    document
+    .getElementById(
+      "propertyPrice"
+    )
     .value
     .trim();
+
 
   var description =
-    document.getElementById("propertyDescription")
+
+    document
+    .getElementById(
+      "propertyDescription"
+    )
     .value
     .trim();
 
+
   var images =
-    document.getElementById("propertyImages").files;
+
+    document
+    .getElementById(
+      "propertyImages"
+    )
+    .files;
 
 
   if(
+
     name === "" ||
+
     phone === "" ||
+
     type === "" ||
+
     operation === "" ||
+
     city === "" ||
+
     price === ""
+
   ){
 
     alert(
+
       "⚠️ المرجو ملء الاسم والهاتف ونوع العقار والعملية والمدينة والثمن."
+
     );
 
     return;
@@ -1325,50 +1813,56 @@ function sendWhatsApp(){
   }
 
 
-  var text =
+  var message =
+
     "🏠 طلب إضافة عقار - منصة عقاري\n\n" +
 
     "👤 الاسم: " +
     name +
-    "\n" +
 
-    "📱 الهاتف: " +
+    "\n📱 الهاتف: " +
     phone +
-    "\n" +
 
-    "🏠 نوع العقار: " +
+    "\n🏠 نوع العقار: " +
     type +
-    "\n" +
 
-    "🔄 العملية: " +
+    "\n🔄 العملية: " +
     operation +
-    "\n" +
 
-    "📍 المدينة: " +
+    "\n📍 المدينة: " +
     city +
-    "\n" +
 
-    "💰 الثمن: " +
+    "\n💰 الثمن: " +
     price +
-    "\n" +
 
-    "📝 الوصف: " +
-    (description || "بدون وصف") +
-    "\n\n" +
+    "\n📝 الوصف: " +
 
-    "📸 عدد الصور المختارة: " +
+    (
+      description ||
+      "بدون وصف"
+    ) +
+
+    "\n📸 عدد الصور المختارة: " +
+
     images.length +
-    "\n" +
 
-    "⚠️ المرجو إرسال الصور في نفس محادثة WhatsApp.";
+    "\n\n⚠️ المرجو إرسال الصور في نفس محادثة WhatsApp.";
 
 
   window.open(
+
     "https://wa.me/" +
+
     whatsappNumber +
+
     "?text=" +
-    encodeURIComponent(text),
+
+    encodeURIComponent(
+      message
+    ),
+
     "_blank"
+
   );
 
 }
@@ -1380,82 +1874,152 @@ function sendWhatsApp(){
 
 function showDetails(id){
 
-  var p = findProperty(id);
+  var p =
+    findProperty(id);
+
 
   if(!p){
     return;
   }
 
-  var text =
+
+  var message =
+
     "السلام عليكم، مهتم بهذا العقار:\n" +
+
     p.title +
+
     "\n📍 " +
     p.city +
+
     "\n💰 " +
     p.price +
     " درهم";
 
-  document.getElementById("detailsContent").innerHTML =
 
-    "<img " +
-    "class='detail-img' " +
-    "src='" + p.image + "' " +
-    "alt='" + p.title + "'>" +
-
-    "<h2>" +
-    p.title +
-    "</h2>" +
-
-    "<h3 style='color:#123e67'>" +
-    p.price +
-    " درهم" +
-    "</h3>" +
-
-    "<p>📍 <strong>المدينة:</strong> " +
-    p.city +
-    "</p>" +
-
-    "<p>🏠 <strong>النوع:</strong> " +
-    p.type +
-    "</p>" +
-
-    "<p>🔄 <strong>العملية:</strong> " +
-    p.operation +
-    "</p>" +
-
-    "<p style='margin-top:15px'>" +
-    p.description +
-    "</p>" +
-
-    "<a " +
-    "class='detail-whatsapp' " +
-    "href='https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(text) +
-    "' " +
-    "target='_blank'>" +
-    "📱 تواصل عبر WhatsApp" +
-    "</a>";
+  document
+    .getElementById(
+      "detailsContent"
+    )
+    .innerHTML =
 
 
-  document.getElementById("detailsOverlay").style.display = "block";
+      "<img " +
 
-  document.body.style.overflow = "hidden";
+      "class='detail-img' " +
+
+      "src='" +
+      p.image +
+      "' " +
+
+      "alt='" +
+      p.title +
+      "'>" +
+
+
+      "<h2>" +
+
+      p.title +
+
+      "</h2>" +
+
+
+      "<h3 style='color:#123e67'>" +
+
+      p.price +
+
+      " درهم" +
+
+      "</h3>" +
+
+
+      "<p>" +
+
+      "📍 <strong>المدينة:</strong> " +
+
+      p.city +
+
+      "</p>" +
+
+
+      "<p>" +
+
+      "🏠 <strong>النوع:</strong> " +
+
+      p.type +
+
+      "</p>" +
+
+
+      "<p>" +
+
+      "🔄 <strong>العملية:</strong> " +
+
+      p.operation +
+
+      "</p>" +
+
+
+      "<p style='margin-top:15px'>" +
+
+      p.description +
+
+      "</p>" +
+
+
+      "<a " +
+
+      "class='detail-whatsapp' " +
+
+      "href='https://wa.me/" +
+
+      whatsappNumber +
+
+      "?text=" +
+
+      encodeURIComponent(
+        message
+      ) +
+
+      "' target='_blank'>" +
+
+      "📱 تواصل عبر WhatsApp" +
+
+      "</a>";
+
+
+  document
+    .getElementById(
+      "detailsOverlay"
+    )
+    .style.display =
+    "block";
+
+
+  document.body.style.overflow =
+    "hidden";
 
 }
 
 
 function closeDetails(event){
 
+  var overlay =
+    document.getElementById(
+      "detailsOverlay"
+    );
+
+
   if(
     !event ||
-    event.target === document.getElementById("detailsOverlay")
+    event.target === overlay
   ){
 
-    document.getElementById("detailsOverlay").style.display = "none";
+    overlay.style.display =
+      "none";
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+      "";
 
   }
 
@@ -1463,14 +2027,16 @@ function closeDetails(event){
 
 
 /* =========================
-   ESC KEY
+   ESCAPE
 ========================= */
 
 document.addEventListener(
   "keydown",
   function(event){
 
-    if(event.key === "Escape"){
+    if(
+      event.key === "Escape"
+    ){
 
       closeForm();
 
@@ -1486,7 +2052,9 @@ document.addEventListener(
    START
 ========================= */
 
-showProperties(properties);
+showProperties(
+  properties
+);
 
 </script>
 
