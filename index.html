@@ -4,244 +4,984 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>عقاري | بيع وشراء وكراء العقارات في المغرب</title>
+<title>عقاري | بيع وشراء وكراء العقارات</title>
 
-<meta name="description" content="عقاري - منصة مغربية لبيع وشراء وكراء العقارات. شقق، منازل، فيلات، أراضي ومحلات تجارية.">
+<meta name="description" content="عقاري - منصة بيع وشراء وكراء العقارات في المغرب">
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 html{
-  scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-  font-family:Arial,Tahoma,sans-serif;
-  background:#f5f7fb;
-  color:#172033;
-  line-height:1.7;
-}
-
-button,input,select,textarea{
-  font-family:inherit;
+font-family:Arial,Tahoma,sans-serif;
+background:#f5f7fb;
+color:#172033;
+line-height:1.6;
 }
 
 header{
-  background:#071a35;
-  color:#fff;
-  padding:16px 5%;
-  box-shadow:0 4px 20px #0003;
-  position:sticky;
-  top:0;
-  z-index:1000;
+background:#071a35;
+color:white;
+padding:18px 6%;
+box-shadow:0 4px 15px #0002;
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .nav{
-  max-width:1200px;
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
 }
 
 .logo{
-  font-size:28px;
-  font-weight:bold;
-  color:#f5c451;
-  white-space:nowrap;
-}
-
-nav{
-  display:flex;
-  gap:18px;
+font-size:28px;
+font-weight:bold;
+color:#f5c451;
 }
 
 nav a{
-  color:#fff;
-  text-decoration:none;
-  font-weight:bold;
-  transition:.2s;
+color:white;
+text-decoration:none;
+margin:0 8px;
+font-weight:bold;
 }
 
 nav a:hover{
-  color:#f5c451;
+color:#f5c451;
 }
 
 .hero{
-  background:
-    linear-gradient(135deg,#071a35e8,#17638de8),
-    url("https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80")
-    center/cover;
-  color:#fff;
-  text-align:center;
-  padding:75px 5% 65px;
+background:linear-gradient(135deg,#071a35,#17638d);
+color:white;
+text-align:center;
+padding:65px 6%;
 }
 
 .hero h1{
-  font-size:42px;
-  margin-bottom:12px;
+font-size:40px;
+margin-bottom:10px;
 }
 
 .hero p{
-  font-size:19px;
-  margin-bottom:25px;
+font-size:18px;
+margin-bottom:25px;
 }
 
 .add-btn{
-  display:inline-block;
-  background:#16a34a;
-  color:#fff;
-  text-decoration:none;
-  padding:14px 25px;
-  border-radius:12px;
-  font-weight:bold;
-  margin-bottom:30px;
-  border:0;
-  cursor:pointer;
-  transition:.2s;
-}
-
-.add-btn:hover{
-  transform:translateY(-2px);
-  background:#12863d;
+display:inline-block;
+background:#16a34a;
+color:white;
+text-decoration:none;
+padding:14px 25px;
+border-radius:12px;
+font-weight:bold;
+margin-bottom:30px;
 }
 
 .search{
-  max-width:1100px;
-  margin:auto;
-  background:#fff;
-  padding:18px;
-  border-radius:18px;
-  display:grid;
-  grid-template-columns:1.4fr 1fr 1fr 1fr .7fr;
-  gap:10px;
-  box-shadow:0 12px 35px #0004;
+max-width:1050px;
+margin:auto;
+background:white;
+padding:18px;
+border-radius:18px;
+display:grid;
+grid-template-columns:repeat(4,1fr) 100px;
+gap:10px;
+box-shadow:0 10px 30px #0003;
 }
 
 input,select,textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #d9dee8;
-  border-radius:10px;
-  font-size:15px;
-  outline:none;
-  background:#fff;
-  color:#172033;
-}
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:#17638d;
-  box-shadow:0 0 0 3px #17638d18;
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+font-family:Arial;
+outline:none;
 }
 
 .search button{
-  background:#f5c451;
-  color:#071a35;
-  border:0;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:16px;
+background:#f5c451;
+color:#071a35;
+border:0;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
 }
 
 .container{
-  max-width:1200px;
-  margin:auto;
-  padding:55px 5%;
+max-width:1200px;
+margin:auto;
+padding:45px 6%;
 }
 
 .title{
-  text-align:center;
-  margin-bottom:30px;
+text-align:center;
+margin-bottom:30px;
 }
 
 .title h2{
-  font-size:30px;
-  margin-bottom:5px;
+font-size:30px;
 }
 
 .title p{
-  color:#667085;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-  margin-bottom:45px;
-}
-
-.stat{
-  background:#fff;
-  border-radius:16px;
-  padding:22px;
-  text-align:center;
-  box-shadow:0 7px 25px #0001;
-}
-
-.stat strong{
-  display:block;
-  font-size:30px;
-  color:#123e67;
-}
-
-.stat span{
-  color:#667085;
+color:#667085;
 }
 
 .cards{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
 }
 
 .card{
-  background:#fff;
-  border-radius:18px;
-  overflow:hidden;
-  box-shadow:0 7px 25px #0001;
-  transition:.3s;
-  position:relative;
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 7px 25px #0001;
+transition:.3s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 12px 30px #0002;
+transform:translateY(-5px);
 }
 
 .card img{
-  width:100%;
-  height:220px;
-  object-fit:cover;
-  display:block;
+width:100%;
+height:220px;
+object-fit:cover;
+display:block;
 }
 
 .card-body{
-  padding:18px;
+padding:18px;
 }
 
 .badge{
-  display:inline-block;
-  background:#f5c451;
-  color:#071a35;
-  padding:5px 10px;
-  border-radius:20px;
-  font-size:12px;
-  font-weight:bold;
-}
-
-.badge.green{
-  background:#dcfce7;
-  color:#166534;
+display:inline-block;
+background:#f5c451;
+color:#071a35;
+padding:5px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:bold;
 }
 
 .card h3{
-  margin-top:10px;
-  font-size:
+margin-top:10px;
+}
+
+.price{
+font-size:21px;
+font-weight:bold;
+color:#123e67;
+margin:8px 0;
+}
+
+.location{
+color:#667085;
+font-size:14px;
+}
+
+.description{
+color:#667085;
+font-size:14px;
+margin-top:8px;
+min-height:45px;
+}
+
+.actions{
+display:flex;
+gap:8px;
+margin-top:15px;
+}
+
+.whatsapp{
+flex:1;
+background:#20c76b;
+color:white;
+border:0;
+padding:12px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.details{
+flex:1;
+background:#123e67;
+color:white;
+border:0;
+padding:12px;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.whatsapp:hover,
+.details:hover{
+opacity:.9;
+}
+
+.empty{
+text-align:center;
+padding:40px;
+background:white;
+border-radius:15px;
+grid-column:1/-1;
+color:#667085;
+}
+
+.add-section{
+background:linear-gradient(135deg,#071a35,#17638d);
+color:white;
+text-align:center;
+padding:40px 20px;
+border-radius:20px;
+margin-top:20px;
+}
+
+.add-section h2{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.add-section p{
+margin-bottom:20px;
+}
+
+.add-section a{
+display:inline-block;
+background:#f5c451;
+color:#071a35;
+text-decoration:none;
+padding:13px 24px;
+border-radius:10px;
+font-weight:bold;
+}
+
+footer{
+background:#071a35;
+color:white;
+padding:35px 6%;
+margin-top:30px;
+}
+
+.footer-inner{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+gap:20px;
+}
+
+.footer-inner h2{
+color:#f5c451;
+}
+
+footer a{
+color:#f5c451;
+text-decoration:none;
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+background:#0009;
+z-index:2000;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.modal-box{
+background:white;
+width:100%;
+max-width:700px;
+border-radius:18px;
+padding:25px;
+position:relative;
+max-height:90vh;
+overflow:auto;
+}
+
+.close{
+position:absolute;
+left:15px;
+top:8px;
+font-size:30px;
+cursor:pointer;
+color:#555;
+}
+
+.modal-box img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:12px;
+}
+
+.modal-box h2{
+margin-top:15px;
+}
+
+.modal-whatsapp{
+display:block;
+width:100%;
+background:#20c76b;
+color:white;
+text-align:center;
+text-decoration:none;
+padding:13px;
+border-radius:10px;
+font-weight:bold;
+margin-top:20px;
+}
+
+@media(max-width:900px){
+
+.search{
+grid-template-columns:1fr 1fr;
+}
+
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:650px){
+
+.nav{
+flex-direction:column;
+gap:12px;
+}
+
+nav a{
+font-size:14px;
+margin:0 4px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+.search{
+grid-template-columns:1fr;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.footer-inner{
+display:block;
+}
+
+.footer-inner>div{
+margin-bottom:20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+🏠 عقاري
+</div>
+
+<nav>
+<a href="#home">الرئيسية</a>
+<a href="#properties">العقارات</a>
+<a href="#add">أضف عقارك</a>
+<a href="#contact">اتصل بنا</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<section class="hero" id="home">
+
+<h1>
+لقِ عقارك المناسب بسهولة
+</h1>
+
+<p>
+بيع • شراء • كراء العقارات في المغرب
+</p>
+
+<a
+href="https://wa.me/212641577185?text=السلام%20عليكم،%20بغيت%20نضيف%20عقار%20لمنصة%20عقاري."
+target="_blank"
+class="add-btn"
+>
+🏠 أضف عقارك
+</a>
+
+
+<div class="search">
+
+<input
+id="searchText"
+placeholder="شنو كتقلب؟"
+/>
+
+<select id="typeFilter">
+
+<option value="">
+نوع العقار
+</option>
+
+<option value="شقة">
+شقة
+</option>
+
+<option value="منزل">
+منزل
+</option>
+
+<option value="فيلا">
+فيلا
+</option>
+
+<option value="أرض">
+أرض
+</option>
+
+<option value="محل تجاري">
+محل تجاري
+</option>
+
+</select>
+
+
+<select id="operationFilter">
+
+<option value="">
+بيع أو كراء
+</option>
+
+<option value="بيع">
+بيع
+</option>
+
+<option value="كراء">
+كراء
+</option>
+
+</select>
+
+
+<input
+id="cityFilter"
+placeholder="المدينة"
+/>
+
+
+<button onclick="searchProperties()">
+🔎 بحث
+</button>
+
+</div>
+
+</section>
+
+
+<section class="container" id="properties">
+
+<div class="title">
+
+<h2>
+⭐ عقارات مميزة
+</h2>
+
+<p>
+اكتشف أفضل العروض العقارية
+</p>
+
+</div>
+
+
+<div
+class="cards"
+id="propertyList"
+>
+</div>
+
+</section>
+
+
+<section class="container" id="add">
+
+<div class="add-section">
+
+<h2>
+🏠 عندك عقار للبيع أو الكراء؟
+</h2>
+
+<p>
+تواصل معنا عبر WhatsApp لإضافة إعلانك إلى منصة عقاري.
+</p>
+
+<a
+href="https://wa.me/212641577185?text=السلام%20عليكم،%20بغيت%20نضيف%20عقار%20لمنصة%20عقاري.%0A%0Aنوع%20العقار:%0Aالمدينة:%0Aبيع%20أو%20كراء:%0Aالثمن:"
+target="_blank"
+>
+➕ أضف عقارك الآن
+</a>
+
+</div>
+
+</section>
+
+
+<footer id="contact">
+
+<div class="footer-inner">
+
+<div>
+
+<h2>
+🏠 عقاري
+</h2>
+
+<p>
+منصة لبيع وشراء وكراء العقارات في المغرب.
+</p>
+
+</div>
+
+
+<div>
+
+<p>
+📱 0641577185
+</p>
+
+<p>
+📧 tamraouihassan34@gmail.com
+</p>
+
+<a
+href="https://wa.me/212641577185"
+target="_blank"
+>
+💬 تواصل معنا عبر WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+<div
+class="modal"
+id="modal"
+>
+
+<div class="modal-box">
+
+<div
+class="close"
+onclick="closeModal()"
+>
+×
+</div>
+
+<div id="modalContent"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+var whatsappNumber = "212641577185";
+
+
+var properties = [
+
+{
+id:0,
+title:"شقة عصرية للبيع",
+type:"شقة",
+operation:"بيع",
+city:"أكادير",
+price:"850,000",
+image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+description:"شقة جميلة بتصميم عصري، مناسبة للسكن العائلي."
+},
+
+{
+id:1,
+title:"فيلا فاخرة",
+type:"فيلا",
+operation:"بيع",
+city:"مراكش",
+price:"2,400,000",
+image:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80",
+description:"فيلا واسعة بتجهيزات ممتازة وموقع مميز."
+},
+
+{
+id:2,
+title:"محل تجاري للكراء",
+type:"محل تجاري",
+operation:"كراء",
+city:"الدار البيضاء",
+price:"7,000 / شهر",
+image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
+description:"محل تجاري مناسب لمختلف الأنشطة."
+},
+
+{
+id:3,
+title:"منزل عائلي للبيع",
+type:"منزل",
+operation:"بيع",
+city:"أيت ملول",
+price:"620,000",
+image:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80",
+description:"منزل مناسب للعائلة في موقع هادئ."
+},
+
+{
+id:4,
+title:"أرض للبيع",
+type:"أرض",
+operation:"بيع",
+city:"تارودانت",
+price:"350,000",
+image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
+description:"قطعة أرض مناسبة للاستثمار."
+},
+
+{
+id:5,
+title:"شقة للكراء",
+type:"شقة",
+operation:"كراء",
+city:"أكادير",
+price:"3,500 / شهر",
+image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80",
+description:"شقة مجهزة ومناسبة للسكن."
+}
+
+];
+
+
+function showProperties(list){
+
+var box =
+document.getElementById("propertyList");
+
+
+if(list.length === 0){
+
+box.innerHTML =
+"<div class='empty'>🔎<br><br>لم نجد عقارات مطابقة للبحث.</div>";
+
+return;
+
+}
+
+
+var html = "";
+
+
+for(var i=0;i<list.length;i++){
+
+var p = list[i];
+
+
+html +=
+
+"<div class='card'>"+
+
+"<img src='"+p.image+"' alt='"+p.title+"'>"+
+
+"<div class='card-body'>"+
+
+"<span class='badge'>⭐ مميز</span>"+
+
+"<h3>"+p.title+"</h3>"+
+
+"<div class='price'>"+p.price+" درهم</div>"+
+
+"<div class='location'>📍 "+
+p.city+
+" • "+
+p.type+
+" • "+
+p.operation+
+"</div>"+
+
+"<div class='description'>"+
+p.description+
+"</div>"+
+
+"<div class='actions'>"+
+
+"<button class='whatsapp' onclick='contactWhatsApp("+p.id+")'>"+
+"📱 WhatsApp"+
+"</button>"+
+
+"<button class='details' onclick='details("+p.id+")'>"+
+"التفاصيل"+
+"</button>"+
+
+"</div>"+
+
+"</div>"+
+
+"</div>";
+
+}
+
+
+box.innerHTML = html;
+
+}
+
+
+function contactWhatsApp(id){
+
+var p = null;
+
+
+for(var i=0;i<properties.length;i++){
+
+if(properties[i].id === id){
+
+p = properties[i];
+
+break;
+
+}
+
+}
+
+
+if(!p){
+
+return;
+
+}
+
+
+var text =
+"السلام عليكم، مهتم بهذا العقار في منصة عقاري:\n\n"+
+"🏠 العقار: "+p.title+"\n"+
+"📍 المدينة: "+p.city+"\n"+
+"💰 الثمن: "+p.price+" درهم\n"+
+"🔄 العملية: "+p.operation;
+
+
+var url =
+"https://wa.me/"+
+whatsappNumber+
+"?text="+
+encodeURIComponent(text);
+
+
+window.open(url,"_blank");
+
+}
+
+
+function details(id){
+
+var p = null;
+
+
+for(var i=0;i<properties.length;i++){
+
+if(properties[i].id === id){
+
+p = properties[i];
+
+break;
+
+}
+
+}
+
+
+if(!p){
+
+return;
+
+}
+
+
+document.getElementById("modalContent").innerHTML =
+
+"<img src='"+p.image+"' alt='"+p.title+"'>"+
+
+"<h2>"+p.title+"</h2>"+
+
+"<h3 style='color:#123e67;margin:8px 0'>"+
+p.price+
+" درهم</h3>"+
+
+"<p>📍 <strong>المدينة:</strong> "+
+p.city+
+"</p>"+
+
+"<p>🏠 <strong>النوع:</strong> "+
+p.type+
+"</p>"+
+
+"<p>🔄 <strong>العملية:</strong> "+
+p.operation+
+"</p>"+
+
+"<p style='margin-top:15px'>"+
+p.description+
+"</p>"+
+
+"<a class='modal-whatsapp' href='https://wa.me/"+
+whatsappNumber+
+"?text="+
+encodeURIComponent(
+"السلام عليكم، مهتم بهذا العقار: "+
+p.title+
+" في "+
+p.city+
+". الثمن: "+
+p.price+
+" درهم."
+)+
+"' target='_blank'>"+
+"📱 تواصل عبر WhatsApp"+
+"</a>";
+
+
+document.getElementById("modal").style.display =
+"flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById("modal").style.display =
+"none";
+
+}
+
+
+function searchProperties(){
+
+var text =
+document.getElementById("searchText")
+.value
+.toLowerCase()
+.trim();
+
+
+var type =
+document.getElementById("typeFilter")
+.value;
+
+
+var operation =
+document.getElementById("operationFilter")
+.value;
+
+
+var city =
+document.getElementById("cityFilter")
+.value
+.toLowerCase()
+.trim();
+
+
+var results = [];
+
+
+for(var i=0;i<properties.length;i++){
+
+var p = properties[i];
+
+
+var textMatch =
+text === "" ||
+p.title.toLowerCase().indexOf(text) !== -1 ||
+p.description.toLowerCase().indexOf(text) !== -1 ||
+p.city.toLowerCase().indexOf(text) !== -1;
+
+
+var typeMatch =
+type === "" ||
+p.type === type;
+
+
+var operationMatch =
+operation === "" ||
+p.operation === operation;
+
+
+var cityMatch =
+city === "" ||
+p.city.toLowerCase().indexOf(city) !== -1;
+
+
+if(
+textMatch &&
+typeMatch &&
+operationMatch &&
+cityMatch
+){
+
+results.push(p);
+
+}
+
+}
+
+
+showProperties(results);
+
+
+document
+.getElementById("properties")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+showProperties(properties);
+
+
+</script>
+
+</body>
+</html>
