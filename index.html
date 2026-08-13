@@ -19,7 +19,237 @@ padding:0;
 html{
 scroll-behavior:smooth;
 }
+<!-- ===== فورم إضافة عقار ===== -->
 
+<div id="addPropertyBox" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+z-index:9999;
+padding:15px;
+overflow:auto;
+">
+
+<div style="
+max-width:600px;
+margin:30px auto;
+background:white;
+border-radius:20px;
+padding:25px;
+position:relative;
+">
+
+<button onclick="closePropertyForm()" style="
+position:absolute;
+left:15px;
+top:10px;
+border:0;
+background:none;
+font-size:30px;
+cursor:pointer;
+color:#555;
+">
+×
+</button>
+
+<h2 style="
+text-align:center;
+color:#071a35;
+margin-bottom:5px;
+">
+🏠 أضف عقارك
+</h2>
+
+<p style="
+text-align:center;
+color:#667085;
+margin-bottom:20px;
+">
+أرسل معلومات عقارك وسنتواصل معك
+</p>
+
+
+<label>👤 الاسم</label>
+
+<input
+id="ownerName"
+type="text"
+placeholder="اسمك الكامل"
+style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
+>
+
+
+<label>📱 رقم الهاتف</label>
+
+<input
+id="ownerPhone"
+type="tel"
+placeholder="06XXXXXXXX"
+style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
+>
+
+
+<label>🏠 نوع العقار</label>
+
+<select
+id="propertyType"
+style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
+>
+
+<option value="">اختر نوع العقار</option>
+<option value="شقة">شقة</option>
+<option value="منزل">منزل</option>
+<option value="فيلا">فيلا</option>
+<option value="أرض">أرض</option>
+<option value="محل تجاري">محل تجاري</option>
+
+</select>
+
+
+<label>🔄 العملية</label>
+
+<select
+id="propertyOperation"
+style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
+>
+
+<option value="">بيع أو كراء</option>
+<option value="بيع">بيع</option>
+<option value="كراء">كراء</option>
+
+</select>
+
+
+<label>📍 المدينة</label>
+
+<input
+id="propertyCity"
+type="text"
+placeholder="مثلاً: أكادير"
+style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
+>
+
+
+<label>💰 الثمن</label>
+
+<input
+id="propertyPrice"
+type="text"
+placeholder="مثلاً: 650000 درهم"
+style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
+>
+
+
+<label>📝 وصف العقار</label>
+
+<textarea
+id="propertyDescription"
+rows="5"
+placeholder="اكتب تفاصيل العقار..."
+style="width:100%;padding:12px;margin:6px 0 18px;border:1px solid #ddd;border-radius:10px;resize:vertical;"
+></textarea>
+
+
+<button
+onclick="sendPropertyWhatsApp()"
+style="
+width:100%;
+padding:15px;
+border:0;
+border-radius:12px;
+background:#20c76b;
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+"
+>
+📱 إرسال الإعلان عبر WhatsApp
+</button>
+
+</div>
+</div>
+
+
+<script>
+
+function openPropertyForm(){
+
+document.getElementById("addPropertyBox").style.display="block";
+
+}
+
+function closePropertyForm(){
+
+document.getElementById("addPropertyBox").style.display="none";
+
+}
+
+
+function sendPropertyWhatsApp(){
+
+var name =
+document.getElementById("ownerName").value.trim();
+
+var phone =
+document.getElementById("ownerPhone").value.trim();
+
+var type =
+document.getElementById("propertyType").value;
+
+var operation =
+document.getElementById("propertyOperation").value;
+
+var city =
+document.getElementById("propertyCity").value.trim();
+
+var price =
+document.getElementById("propertyPrice").value.trim();
+
+var description =
+document.getElementById("propertyDescription").value.trim();
+
+
+if(
+name==="" ||
+phone==="" ||
+type==="" ||
+operation==="" ||
+city==="" ||
+price===""
+){
+
+alert("⚠️ المرجو ملء جميع المعلومات الأساسية.");
+
+return;
+
+}
+
+
+var message =
+"🏠 طلب إضافة عقار - منصة عقاري\n\n"+
+"👤 الاسم: "+name+"\n"+
+"📱 الهاتف: "+phone+"\n"+
+"🏠 نوع العقار: "+type+"\n"+
+"🔄 العملية: "+operation+"\n"+
+"📍 المدينة: "+city+"\n"+
+"💰 الثمن: "+price+"\n"+
+"📝 الوصف: "+description;
+
+
+var whatsapp =
+"https://wa.me/212641577185?text="+
+encodeURIComponent(message);
+
+
+window.open(whatsapp,"_blank");
+
+}
+
+</script>
+
+<!-- ===== نهاية فورم إضافة عقار ===== -->
 body{
 font-family:Arial,Tahoma,sans-serif;
 background:#f5f7fb;
