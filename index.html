@@ -4,1220 +4,1378 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>عقاري | بيع وشراء وكراء العقارات</title>
+<title>عقاري | بيع وشراء وكراء العقارات في المغرب</title>
 
-<meta name="description" content="عقاري - منصة بيع وشراء وكراء العقارات في المغرب">
+<meta name="description" content="عقاري - منصة لبيع وشراء وكراء العقارات في المغرب">
 
 <style>
-
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 html{
-scroll-behavior:smooth;
-}
-<!-- ===== فورم إضافة عقار ===== -->
-
-<div id="addPropertyBox" style="
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.75);
-z-index:9999;
-padding:15px;
-overflow:auto;
-">
-
-<div style="
-max-width:600px;
-margin:30px auto;
-background:white;
-border-radius:20px;
-padding:25px;
-position:relative;
-">
-
-<button onclick="closePropertyForm()" style="
-position:absolute;
-left:15px;
-top:10px;
-border:0;
-background:none;
-font-size:30px;
-cursor:pointer;
-color:#555;
-">
-×
-</button>
-
-<h2 style="
-text-align:center;
-color:#071a35;
-margin-bottom:5px;
-">
-🏠 أضف عقارك
-</h2>
-
-<p style="
-text-align:center;
-color:#667085;
-margin-bottom:20px;
-">
-أرسل معلومات عقارك وسنتواصل معك
-</p>
-
-
-<label>👤 الاسم</label>
-
-<input
-id="ownerName"
-type="text"
-placeholder="اسمك الكامل"
-style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<label>📱 رقم الهاتف</label>
-
-<input
-id="ownerPhone"
-type="tel"
-placeholder="06XXXXXXXX"
-style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<label>🏠 نوع العقار</label>
-
-<select
-id="propertyType"
-style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
->
-
-<option value="">اختر نوع العقار</option>
-<option value="شقة">شقة</option>
-<option value="منزل">منزل</option>
-<option value="فيلا">فيلا</option>
-<option value="أرض">أرض</option>
-<option value="محل تجاري">محل تجاري</option>
-
-</select>
-
-
-<label>🔄 العملية</label>
-
-<select
-id="propertyOperation"
-style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
->
-
-<option value="">بيع أو كراء</option>
-<option value="بيع">بيع</option>
-<option value="كراء">كراء</option>
-
-</select>
-
-
-<label>📍 المدينة</label>
-
-<input
-id="propertyCity"
-type="text"
-placeholder="مثلاً: أكادير"
-style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<label>💰 الثمن</label>
-
-<input
-id="propertyPrice"
-type="text"
-placeholder="مثلاً: 650000 درهم"
-style="width:100%;padding:12px;margin:6px 0 14px;border:1px solid #ddd;border-radius:10px;"
->
-
-
-<label>📝 وصف العقار</label>
-
-<textarea
-id="propertyDescription"
-rows="5"
-placeholder="اكتب تفاصيل العقار..."
-style="width:100%;padding:12px;margin:6px 0 18px;border:1px solid #ddd;border-radius:10px;resize:vertical;"
-></textarea>
-
-
-<button
-onclick="sendPropertyWhatsApp()"
-style="
-width:100%;
-padding:15px;
-border:0;
-border-radius:12px;
-background:#20c76b;
-color:white;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-"
->
-📱 إرسال الإعلان عبر WhatsApp
-</button>
-
-</div>
-</div>
-
-
-<script>
-
-function openPropertyForm(){
-
-document.getElementById("addPropertyBox").style.display="block";
-
+  scroll-behavior:smooth;
 }
 
-function closePropertyForm(){
-
-document.getElementById("addPropertyBox").style.display="none";
-
-}
-
-
-function sendPropertyWhatsApp(){
-
-var name =
-document.getElementById("ownerName").value.trim();
-
-var phone =
-document.getElementById("ownerPhone").value.trim();
-
-var type =
-document.getElementById("propertyType").value;
-
-var operation =
-document.getElementById("propertyOperation").value;
-
-var city =
-document.getElementById("propertyCity").value.trim();
-
-var price =
-document.getElementById("propertyPrice").value.trim();
-
-var description =
-document.getElementById("propertyDescription").value.trim();
-
-
-if(
-name==="" ||
-phone==="" ||
-type==="" ||
-operation==="" ||
-city==="" ||
-price===""
-){
-
-alert("⚠️ المرجو ملء جميع المعلومات الأساسية.");
-
-return;
-
-}
-
-
-var message =
-"🏠 طلب إضافة عقار - منصة عقاري\n\n"+
-"👤 الاسم: "+name+"\n"+
-"📱 الهاتف: "+phone+"\n"+
-"🏠 نوع العقار: "+type+"\n"+
-"🔄 العملية: "+operation+"\n"+
-"📍 المدينة: "+city+"\n"+
-"💰 الثمن: "+price+"\n"+
-"📝 الوصف: "+description;
-
-
-var whatsapp =
-"https://wa.me/212641577185?text="+
-encodeURIComponent(message);
-
-
-window.open(whatsapp,"_blank");
-
-}
-
-</script>
-
-<!-- ===== نهاية فورم إضافة عقار ===== -->
 body{
-font-family:Arial,Tahoma,sans-serif;
-background:#f5f7fb;
-color:#172033;
-line-height:1.6;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+  line-height:1.6;
 }
 
+button,
+input,
+select,
+textarea{
+  font-family:inherit;
+}
+
+/* HEADER */
 header{
-background:#071a35;
-color:white;
-padding:18px 6%;
-box-shadow:0 4px 15px #0002;
-position:sticky;
-top:0;
-z-index:1000;
+  background:#071a35;
+  color:white;
+  padding:16px 6%;
+  box-shadow:0 4px 15px rgba(0,0,0,.15);
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
 .nav{
-max-width:1200px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:space-between;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-font-size:28px;
-font-weight:bold;
-color:#f5c451;
+  font-size:28px;
+  font-weight:bold;
+  color:#f5c451;
 }
 
 nav a{
-color:white;
-text-decoration:none;
-margin:0 8px;
-font-weight:bold;
+  color:white;
+  text-decoration:none;
+  margin:0 7px;
+  font-weight:bold;
 }
 
 nav a:hover{
-color:#f5c451;
+  color:#f5c451;
 }
 
+/* HERO */
 .hero{
-background:linear-gradient(135deg,#071a35,#17638d);
-color:white;
-text-align:center;
-padding:65px 6%;
+  background:linear-gradient(135deg,#071a35,#17638d);
+  color:white;
+  text-align:center;
+  padding:65px 6%;
 }
 
 .hero h1{
-font-size:40px;
-margin-bottom:10px;
+  font-size:40px;
+  margin-bottom:10px;
 }
 
 .hero p{
-font-size:18px;
-margin-bottom:25px;
+  font-size:18px;
+  margin-bottom:25px;
 }
 
 .add-btn{
-display:inline-block;
-background:#16a34a;
-color:white;
-text-decoration:none;
-padding:14px 25px;
-border-radius:12px;
-font-weight:bold;
-margin-bottom:30px;
+  display:inline-block;
+  background:#16a34a;
+  color:white;
+  border:0;
+  padding:14px 25px;
+  border-radius:12px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-bottom:30px;
+  font-size:16px;
 }
 
+/* SEARCH */
 .search{
-max-width:1050px;
-margin:auto;
-background:white;
-padding:18px;
-border-radius:18px;
-display:grid;
-grid-template-columns:repeat(4,1fr) 100px;
-gap:10px;
-box-shadow:0 10px 30px #0003;
+  max-width:1050px;
+  margin:auto;
+  background:white;
+  padding:18px;
+  border-radius:18px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr) 100px;
+  gap:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
 
-input,select,textarea{
-width:100%;
-padding:13px;
-border:1px solid #ddd;
-border-radius:10px;
-font-size:15px;
-font-family:Arial;
-outline:none;
+input,
+select,
+textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:15px;
+  outline:none;
+  background:white;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:#17638d;
 }
 
 .search button{
-background:#f5c451;
-color:#071a35;
-border:0;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
+  background:#f5c451;
+  color:#071a35;
+  border:0;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
+/* SECTIONS */
 .container{
-max-width:1200px;
-margin:auto;
-padding:45px 6%;
+  max-width:1200px;
+  margin:auto;
+  padding:45px 6%;
 }
 
 .title{
-text-align:center;
-margin-bottom:30px;
+  text-align:center;
+  margin-bottom:30px;
 }
 
 .title h2{
-font-size:30px;
+  font-size:30px;
 }
 
 .title p{
-color:#667085;
+  color:#667085;
 }
 
+/* CARDS */
 .cards{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:22px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
 }
 
 .card{
-background:white;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 7px 25px #0001;
-transition:.3s;
+  background:white;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 7px 25px rgba(0,0,0,.08);
+  transition:.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
+  transform:translateY(-5px);
 }
 
 .card img{
-width:100%;
-height:220px;
-object-fit:cover;
-display:block;
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  display:block;
 }
 
 .card-body{
-padding:18px;
+  padding:18px;
 }
 
 .badge{
-display:inline-block;
-background:#f5c451;
-color:#071a35;
-padding:5px 10px;
-border-radius:20px;
-font-size:12px;
-font-weight:bold;
+  display:inline-block;
+  background:#f5c451;
+  color:#071a35;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
 }
 
 .card h3{
-margin-top:10px;
+  margin-top:10px;
 }
 
 .price{
-font-size:21px;
-font-weight:bold;
-color:#123e67;
-margin:8px 0;
+  font-size:21px;
+  font-weight:bold;
+  color:#123e67;
+  margin:8px 0;
 }
 
 .location{
-color:#667085;
-font-size:14px;
+  color:#667085;
+  font-size:14px;
 }
 
 .description{
-color:#667085;
-font-size:14px;
-margin-top:8px;
-min-height:45px;
+  color:#667085;
+  font-size:14px;
+  margin-top:8px;
+  min-height:45px;
 }
 
 .actions{
-display:flex;
-gap:8px;
-margin-top:15px;
+  display:flex;
+  gap:8px;
+  margin-top:15px;
+}
+
+.whatsapp,
+.details{
+  flex:1;
+  border:0;
+  padding:12px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .whatsapp{
-flex:1;
-background:#20c76b;
-color:white;
-border:0;
-padding:12px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
+  background:#20c76b;
+  color:white;
 }
 
 .details{
-flex:1;
-background:#123e67;
-color:white;
-border:0;
-padding:12px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
+  background:#123e67;
+  color:white;
 }
 
 .whatsapp:hover,
 .details:hover{
-opacity:.9;
+  opacity:.9;
 }
 
 .empty{
-text-align:center;
-padding:40px;
-background:white;
-border-radius:15px;
-grid-column:1/-1;
-color:#667085;
+  text-align:center;
+  padding:40px;
+  background:white;
+  border-radius:15px;
+  grid-column:1/-1;
+  color:#667085;
 }
 
+/* ADD SECTION */
 .add-section{
-background:linear-gradient(135deg,#071a35,#17638d);
-color:white;
-text-align:center;
-padding:40px 20px;
-border-radius:20px;
-margin-top:20px;
+  background:linear-gradient(135deg,#071a35,#17638d);
+  color:white;
+  text-align:center;
+  padding:40px 20px;
+  border-radius:20px;
 }
 
 .add-section h2{
-font-size:28px;
-margin-bottom:10px;
+  font-size:28px;
+  margin-bottom:10px;
 }
 
 .add-section p{
-margin-bottom:20px;
+  margin-bottom:20px;
 }
 
-.add-section a{
-display:inline-block;
-background:#f5c451;
-color:#071a35;
-text-decoration:none;
-padding:13px 24px;
-border-radius:10px;
-font-weight:bold;
+.add-section button{
+  background:#f5c451;
+  color:#071a35;
+  border:0;
+  padding:13px 24px;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  font-size:16px;
 }
 
+/* FOOTER */
 footer{
-background:#071a35;
-color:white;
-padding:35px 6%;
-margin-top:30px;
+  background:#071a35;
+  color:white;
+  padding:35px 6%;
+  margin-top:30px;
 }
 
 .footer-inner{
-max-width:1200px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-gap:20px;
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
 }
 
 .footer-inner h2{
-color:#f5c451;
+  color:#f5c451;
 }
 
 footer a{
-color:#f5c451;
-text-decoration:none;
+  color:#f5c451;
+  text-decoration:none;
+}
+
+/* MODALS */
+.modal,
+.property-form{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:3000;
+  padding:15px;
+  overflow:auto;
 }
 
 .modal{
-display:none;
-position:fixed;
-inset:0;
-background:#0009;
-z-index:2000;
-align-items:center;
-justify-content:center;
-padding:20px;
+  align-items:center;
+  justify-content:center;
+}
+
+.modal-box,
+.form-box{
+  background:white;
+  width:100%;
+  max-width:700px;
+  margin:30px auto;
+  border-radius:20px;
+  padding:25px;
+  position:relative;
 }
 
 .modal-box{
-background:white;
-width:100%;
-max-width:700px;
-border-radius:18px;
-padding:25px;
-position:relative;
-max-height:90vh;
-overflow:auto;
+  max-height:90vh;
+  overflow:auto;
+}
+
+.form-box{
+  max-width:600px;
 }
 
 .close{
-position:absolute;
-left:15px;
-top:8px;
-font-size:30px;
-cursor:pointer;
-color:#555;
+  position:absolute;
+  left:15px;
+  top:8px;
+  border:0;
+  background:none;
+  font-size:32px;
+  cursor:pointer;
+  color:#555;
+}
+
+.form-box h2{
+  text-align:center;
+  color:#071a35;
+  margin-bottom:5px;
+}
+
+.form-subtitle{
+  text-align:center;
+  color:#667085;
+  margin-bottom:20px;
+}
+
+.form-group{
+  margin-bottom:14px;
+}
+
+.form-group label{
+  display:block;
+  font-weight:bold;
+  margin-bottom:6px;
+}
+
+.submit-property{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:12px;
+  background:#20c76b;
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:5px;
 }
 
 .modal-box img{
-width:100%;
-height:300px;
-object-fit:cover;
-border-radius:12px;
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:12px;
 }
 
 .modal-box h2{
-margin-top:15px;
+  margin-top:15px;
 }
 
 .modal-whatsapp{
-display:block;
-width:100%;
-background:#20c76b;
-color:white;
-text-align:center;
-text-decoration:none;
-padding:13px;
-border-radius:10px;
-font-weight:bold;
-margin-top:20px;
+  display:block;
+  width:100%;
+  background:#20c76b;
+  color:white;
+  text-align:center;
+  text-decoration:none;
+  padding:13px;
+  border-radius:10px;
+  font-weight:bold;
+  margin-top:20px;
 }
 
+/* RESPONSIVE */
 @media(max-width:900px){
 
-.search{
-grid-template-columns:1fr 1fr;
-}
+  .search{
+    grid-template-columns:1fr 1fr;
+  }
 
-.cards{
-grid-template-columns:repeat(2,1fr);
-}
-
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
 @media(max-width:650px){
 
-.nav{
-flex-direction:column;
-gap:12px;
-}
+  header{
+    padding:14px 4%;
+  }
 
-nav a{
-font-size:14px;
-margin:0 4px;
-}
+  .nav{
+    flex-direction:column;
+    gap:10px;
+  }
 
-.hero h1{
-font-size:30px;
-}
+  nav{
+    text-align:center;
+  }
 
-.search{
-grid-template-columns:1fr;
-}
+  nav a{
+    font-size:13px;
+    margin:0 3px;
+  }
 
-.cards{
-grid-template-columns:1fr;
-}
+  .hero{
+    padding:45px 5%;
+  }
 
-.footer-inner{
-display:block;
-}
+  .hero h1{
+    font-size:30px;
+  }
 
-.footer-inner>div{
-margin-bottom:20px;
-}
+  .hero p{
+    font-size:16px;
+  }
 
-}
+  .search{
+    grid-template-columns:1fr;
+  }
 
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .footer-inner{
+    display:block;
+  }
+
+  .footer-inner > div{
+    margin-bottom:20px;
+  }
+
+  .modal-box,
+  .form-box{
+    padding:20px;
+  }
+}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
+  <div class="nav">
 
-<div class="nav">
+    <div class="logo">
+      🏠 عقاري
+    </div>
 
-<div class="logo">
-🏠 عقاري
-</div>
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#properties">العقارات</a>
+      <a href="#add">أضف عقارك</a>
+      <a href="#contact">اتصل بنا</a>
+    </nav>
 
-<nav>
-<a href="#home">الرئيسية</a>
-<a href="#properties">العقارات</a>
-<a href="#add">أضف عقارك</a>
-<a href="#contact">اتصل بنا</a>
-</nav>
-
-</div>
-
+  </div>
 </header>
 
 
+<!-- HERO -->
 <section class="hero" id="home">
 
-<h1>
-لقِ عقارك المناسب بسهولة
-</h1>
+  <h1>لقِ عقارك المناسب بسهولة</h1>
 
-<p>
-بيع • شراء • كراء العقارات في المغرب
-</p>
+  <p>
+    بيع • شراء • كراء العقارات في المغرب
+  </p>
 
-<button
-onclick="openPropertyForm()"
-class="add-btn"
-style="border:0;cursor:pointer;font-family:Arial;"
->
-🏠 أضف عقارك
-</button>
+  <button
+    class="add-btn"
+    onclick="openPropertyForm()"
+  >
+    🏠 أضف عقارك
+  </button>
 
-<div class="search">
+  <div class="search">
 
-<input
-id="searchText"
-placeholder="شنو كتقلب؟"
-/>
+    <input
+      id="searchText"
+      type="text"
+      placeholder="شنو كتقلب؟"
+    >
 
-<select id="typeFilter">
+    <select id="typeFilter">
+      <option value="">نوع العقار</option>
+      <option value="شقة">شقة</option>
+      <option value="منزل">منزل</option>
+      <option value="فيلا">فيلا</option>
+      <option value="أرض">أرض</option>
+      <option value="محل تجاري">محل تجاري</option>
+    </select>
 
-<option value="">
-نوع العقار
-</option>
+    <select id="operationFilter">
+      <option value="">بيع أو كراء</option>
+      <option value="بيع">بيع</option>
+      <option value="كراء">كراء</option>
+    </select>
 
-<option value="شقة">
-شقة
-</option>
+    <input
+      id="cityFilter"
+      type="text"
+      placeholder="المدينة"
+    >
 
-<option value="منزل">
-منزل
-</option>
+    <button onclick="searchProperties()">
+      🔎 بحث
+    </button>
 
-<option value="فيلا">
-فيلا
-</option>
-
-<option value="أرض">
-أرض
-</option>
-
-<option value="محل تجاري">
-محل تجاري
-</option>
-
-</select>
-
-
-<select id="operationFilter">
-
-<option value="">
-بيع أو كراء
-</option>
-
-<option value="بيع">
-بيع
-</option>
-
-<option value="كراء">
-كراء
-</option>
-
-</select>
-
-
-<input
-id="cityFilter"
-placeholder="المدينة"
-/>
-
-
-<button onclick="searchProperties()">
-🔎 بحث
-</button>
-
-</div>
-
+  </div>
 </section>
 
 
+<!-- PROPERTIES -->
 <section class="container" id="properties">
 
-<div class="title">
+  <div class="title">
+    <h2>⭐ عقارات مميزة</h2>
+    <p>اكتشف أفضل العروض العقارية</p>
+  </div>
 
-<h2>
-⭐ عقارات مميزة
-</h2>
-
-<p>
-اكتشف أفضل العروض العقارية
-</p>
-
-</div>
-
-
-<div
-class="cards"
-id="propertyList"
->
-</div>
+  <div
+    class="cards"
+    id="propertyList"
+  ></div>
 
 </section>
 
 
+<!-- ADD PROPERTY -->
 <section class="container" id="add">
 
-<div class="add-section">
+  <div class="add-section">
 
-<h2>
-🏠 عندك عقار للبيع أو الكراء؟
-</h2>
+    <h2>
+      🏠 عندك عقار للبيع أو الكراء؟
+    </h2>
 
-<p>
-تواصل معنا عبر WhatsApp لإضافة إعلانك إلى منصة عقاري.
-</p>
+    <p>
+      أرسل معلومات عقارك وسنتواصل معك عبر WhatsApp.
+    </p>
 
-<button
-onclick="openPropertyForm()"
-style="
-background:#f5c451;
-color:#071a35;
-border:0;
-padding:13px 24px;
-border-radius:10px;
-font-weight:bold;
-cursor:pointer;
-font-size:16px;
-"
->
-➕ أضف عقارك الآن
-</button>
+    <button onclick="openPropertyForm()">
+      ➕ أضف عقارك الآن
+    </button>
 
-</div>
+  </div>
 
 </section>
 
 
+<!-- FOOTER -->
 <footer id="contact">
 
-<div class="footer-inner">
+  <div class="footer-inner">
 
-<div>
+    <div>
+      <h2>🏠 عقاري</h2>
 
-<h2>
-🏠 عقاري
-</h2>
+      <p>
+        منصة لبيع وشراء وكراء العقارات في المغرب.
+      </p>
+    </div>
 
-<p>
-منصة لبيع وشراء وكراء العقارات في المغرب.
-</p>
+    <div>
 
-</div>
+      <p>📱 0641577185</p>
 
+      <p>📧 tamraouihassan34@gmail.com</p>
 
-<div>
+      <a
+        href="https://wa.me/212641577185"
+        target="_blank"
+        rel="noopener"
+      >
+        💬 تواصل معنا عبر WhatsApp
+      </a>
 
-<p>
-📱 0641577185
-</p>
+    </div>
 
-<p>
-📧 tamraouihassan34@gmail.com
-</p>
-
-<a
-href="https://wa.me/212641577185"
-target="_blank"
->
-💬 تواصل معنا عبر WhatsApp
-</a>
-
-</div>
-
-</div>
+  </div>
 
 </footer>
 
 
+<!-- PROPERTY FORM -->
 <div
-class="modal"
-id="modal"
+  class="property-form"
+  id="propertyForm"
 >
 
-<div class="modal-box">
+  <div class="form-box">
 
+    <button
+      class="close"
+      onclick="closePropertyForm()"
+      aria-label="إغلاق"
+    >
+      ×
+    </button>
+
+    <h2>🏠 أضف عقارك</h2>
+
+    <p class="form-subtitle">
+      أرسل معلومات عقارك وسنتواصل معك
+    </p>
+
+    <div class="form-group">
+
+      <label for="ownerName">
+        👤 الاسم
+      </label>
+
+      <input
+        id="ownerName"
+        type="text"
+        placeholder="اسمك الكامل"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="ownerPhone">
+        📱 رقم الهاتف
+      </label>
+
+      <input
+        id="ownerPhone"
+        type="tel"
+        placeholder="06XXXXXXXX"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="propertyType">
+        🏠 نوع العقار
+      </label>
+
+      <select id="propertyType">
+
+        <option value="">
+          اختر نوع العقار
+        </option>
+
+        <option value="شقة">
+          شقة
+        </option>
+
+        <option value="منزل">
+          منزل
+        </option>
+
+        <option value="فيلا">
+          فيلا
+        </option>
+
+        <option value="أرض">
+          أرض
+        </option>
+
+        <option value="محل تجاري">
+          محل تجاري
+        </option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="propertyOperation">
+        🔄 العملية
+      </label>
+
+      <select id="propertyOperation">
+
+        <option value="">
+          بيع أو كراء
+        </option>
+
+        <option value="بيع">
+          بيع
+        </option>
+
+        <option value="كراء">
+          كراء
+        </option>
+
+      </select>
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="propertyCity">
+        📍 المدينة
+      </label>
+
+      <input
+        id="propertyCity"
+        type="text"
+        placeholder="مثلاً: أكادير"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="propertyPrice">
+        💰 الثمن
+      </label>
+
+      <input
+        id="propertyPrice"
+        type="text"
+        placeholder="مثلاً: 650000 درهم"
+      >
+
+    </div>
+
+    <div class="form-group">
+
+      <label for="propertyDescription">
+        📝 وصف العقار
+      </label>
+
+      <textarea
+        id="propertyDescription"
+        rows="5"
+        placeholder="اكتب تفاصيل العقار..."
+      ></textarea>
+
+    </div>
+
+    <button
+      class="submit-property"
+      onclick="sendPropertyWhatsApp()"
+    >
+      📱 إرسال الإعلان عبر WhatsApp
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- DETAILS MODAL -->
 <div
-class="close"
-onclick="closeModal()"
+  class="modal"
+  id="modal"
+  onclick="closeModalOutside(event)"
 >
-×
-</div>
 
-<div id="modalContent"></div>
+  <div
+    class="modal-box"
+    onclick="event.stopPropagation()"
+  >
 
-</div>
+    <button
+      class="close"
+      onclick="closeModal()"
+      aria-label="إغلاق"
+    >
+      ×
+    </button>
+
+    <div id="modalContent"></div>
+
+  </div>
 
 </div>
 
 
 <script>
 
+/* =========================
+   WHATSAPP
+========================= */
+
 var whatsappNumber = "212641577185";
 
 
+/* =========================
+   SAMPLE PROPERTIES
+========================= */
+
 var properties = [
 
-{
-id:0,
-title:"شقة عصرية للبيع",
-type:"شقة",
-operation:"بيع",
-city:"أكادير",
-price:"850,000",
-image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
-description:"شقة جميلة بتصميم عصري، مناسبة للسكن العائلي."
-},
+  {
+    id:0,
+    title:"شقة عصرية للبيع",
+    type:"شقة",
+    operation:"بيع",
+    city:"أكادير",
+    price:"850,000",
+    image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+    description:"شقة جميلة بتصميم عصري، مناسبة للسكن العائلي."
+  },
 
-{
-id:1,
-title:"فيلا فاخرة",
-type:"فيلا",
-operation:"بيع",
-city:"مراكش",
-price:"2,400,000",
-image:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80",
-description:"فيلا واسعة بتجهيزات ممتازة وموقع مميز."
-},
+  {
+    id:1,
+    title:"فيلا فاخرة",
+    type:"فيلا",
+    operation:"بيع",
+    city:"مراكش",
+    price:"2,400,000",
+    image:"https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=900&q=80",
+    description:"فيلا واسعة بتجهيزات ممتازة وموقع مميز."
+  },
 
-{
-id:2,
-title:"محل تجاري للكراء",
-type:"محل تجاري",
-operation:"كراء",
-city:"الدار البيضاء",
-price:"7,000 / شهر",
-image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
-description:"محل تجاري مناسب لمختلف الأنشطة."
-},
+  {
+    id:2,
+    title:"محل تجاري للكراء",
+    type:"محل تجاري",
+    operation:"كراء",
+    city:"الدار البيضاء",
+    price:"7,000 / شهر",
+    image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80",
+    description:"محل تجاري مناسب لمختلف الأنشطة."
+  },
 
-{
-id:3,
-title:"منزل عائلي للبيع",
-type:"منزل",
-operation:"بيع",
-city:"أيت ملول",
-price:"620,000",
-image:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80",
-description:"منزل مناسب للعائلة في موقع هادئ."
-},
+  {
+    id:3,
+    title:"منزل عائلي للبيع",
+    type:"منزل",
+    operation:"بيع",
+    city:"أيت ملول",
+    price:"620,000",
+    image:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80",
+    description:"منزل مناسب للعائلة في موقع هادئ."
+  },
 
-{
-id:4,
-title:"أرض للبيع",
-type:"أرض",
-operation:"بيع",
-city:"تارودانت",
-price:"350,000",
-image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
-description:"قطعة أرض مناسبة للاستثمار."
-},
+  {
+    id:4,
+    title:"أرض للبيع",
+    type:"أرض",
+    operation:"بيع",
+    city:"تارودانت",
+    price:"350,000",
+    image:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=80",
+    description:"قطعة أرض مناسبة للاستثمار."
+  },
 
-{
-id:5,
-title:"شقة للكراء",
-type:"شقة",
-operation:"كراء",
-city:"أكادير",
-price:"3,500 / شهر",
-image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80",
-description:"شقة مجهزة ومناسبة للسكن."
-}
+  {
+    id:5,
+    title:"شقة للكراء",
+    type:"شقة",
+    operation:"كراء",
+    city:"أكادير",
+    price:"3,500 / شهر",
+    image:"https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80",
+    description:"شقة مجهزة ومناسبة للسكن."
+  }
 
 ];
 
 
+/* =========================
+   DISPLAY PROPERTIES
+========================= */
+
 function showProperties(list){
 
-var box =
-document.getElementById("propertyList");
+  var box = document.getElementById("propertyList");
 
+  if(!list || list.length === 0){
 
-if(list.length === 0){
+    box.innerHTML =
+      "<div class='empty'>"+
+      "🔎<br><br>"+
+      "لم نجد عقارات مطابقة للبحث."+
+      "</div>";
 
-box.innerHTML =
-"<div class='empty'>🔎<br><br>لم نجد عقارات مطابقة للبحث.</div>";
+    return;
+  }
 
-return;
+  var html = "";
 
+  for(var i=0; i<list.length; i++){
+
+    var p = list[i];
+
+    html +=
+
+      "<div class='card'>"+
+
+        "<img "+
+          "src='"+p.image+"' "+
+          "alt='"+escapeHtml(p.title)+"' "+
+          "loading='lazy'"+
+        ">"+
+
+        "<div class='card-body'>"+
+
+          "<span class='badge'>⭐ مميز</span>"+
+
+          "<h3>"+escapeHtml(p.title)+"</h3>"+
+
+          "<div class='price'>"+
+            escapeHtml(p.price)+
+            " درهم"+
+          "</div>"+
+
+          "<div class='location'>"+
+            "📍 "+
+            escapeHtml(p.city)+
+            " • "+
+            escapeHtml(p.type)+
+            " • "+
+            escapeHtml(p.operation)+
+          "</div>"+
+
+          "<div class='description'>"+
+            escapeHtml(p.description)+
+          "</div>"+
+
+          "<div class='actions'>"+
+
+            "<button "+
+              "class='whatsapp' "+
+              "onclick='contactWhatsApp("+p.id+")'"+
+            ">"+
+              "📱 WhatsApp"+
+            "</button>"+
+
+            "<button "+
+              "class='details' "+
+              "onclick='details("+p.id+")'"+
+            ">"+
+              "التفاصيل"+
+            "</button>"+
+
+          "</div>"+
+
+        "</div>"+
+
+      "</div>";
+
+  }
+
+  box.innerHTML = html;
 }
 
 
-var html = "";
+/* =========================
+   FIND PROPERTY
+========================= */
 
+function findProperty(id){
 
-for(var i=0;i<list.length;i++){
+  for(var i=0; i<properties.length; i++){
 
-var p = list[i];
+    if(properties[i].id === id){
+      return properties[i];
+    }
 
+  }
 
-html +=
-
-"<div class='card'>"+
-
-"<img src='"+p.image+"' alt='"+p.title+"'>"+
-
-"<div class='card-body'>"+
-
-"<span class='badge'>⭐ مميز</span>"+
-
-"<h3>"+p.title+"</h3>"+
-
-"<div class='price'>"+p.price+" درهم</div>"+
-
-"<div class='location'>📍 "+
-p.city+
-" • "+
-p.type+
-" • "+
-p.operation+
-"</div>"+
-
-"<div class='description'>"+
-p.description+
-"</div>"+
-
-"<div class='actions'>"+
-
-"<button class='whatsapp' onclick='contactWhatsApp("+p.id+")'>"+
-"📱 WhatsApp"+
-"</button>"+
-
-"<button class='details' onclick='details("+p.id+")'>"+
-"التفاصيل"+
-"</button>"+
-
-"</div>"+
-
-"</div>"+
-
-"</div>";
-
+  return null;
 }
 
 
-box.innerHTML = html;
-
-}
-
+/* =========================
+   WHATSAPP PROPERTY
+========================= */
 
 function contactWhatsApp(id){
 
-var p = null;
+  var p = findProperty(id);
 
+  if(!p){
+    return;
+  }
 
-for(var i=0;i<properties.length;i++){
+  var text =
+    "السلام عليكم، مهتم بهذا العقار في منصة عقاري:\n\n"+
+    "🏠 العقار: "+p.title+"\n"+
+    "📍 المدينة: "+p.city+"\n"+
+    "💰 الثمن: "+p.price+" درهم\n"+
+    "🔄 العملية: "+p.operation;
 
-if(properties[i].id === id){
+  var url =
+    "https://wa.me/"+
+    whatsappNumber+
+    "?text="+
+    encodeURIComponent(text);
 
-p = properties[i];
-
-break;
-
+  window.open(url,"_blank","noopener");
 }
 
-}
 
-
-if(!p){
-
-return;
-
-}
-
-
-var text =
-"السلام عليكم، مهتم بهذا العقار في منصة عقاري:\n\n"+
-"🏠 العقار: "+p.title+"\n"+
-"📍 المدينة: "+p.city+"\n"+
-"💰 الثمن: "+p.price+" درهم\n"+
-"🔄 العملية: "+p.operation;
-
-
-var url =
-"https://wa.me/"+
-whatsappNumber+
-"?text="+
-encodeURIComponent(text);
-
-
-window.open(url,"_blank");
-
-}
-
+/* =========================
+   DETAILS
+========================= */
 
 function details(id){
 
-var p = null;
+  var p = findProperty(id);
 
+  if(!p){
+    return;
+  }
 
-for(var i=0;i<properties.length;i++){
+  var message =
+    "السلام عليكم، مهتم بهذا العقار: "+
+    p.title+
+    " في "+
+    p.city+
+    ". الثمن: "+
+    p.price+
+    " درهم.";
 
-if(properties[i].id === id){
+  document.getElementById("modalContent").innerHTML =
 
-p = properties[i];
+    "<img src='"+p.image+"' alt='"+escapeHtml(p.title)+"'>"+
 
-break;
+    "<h2>"+
+      escapeHtml(p.title)+
+    "</h2>"+
 
+    "<h3 style='color:#123e67;margin:8px 0'>"+
+      escapeHtml(p.price)+
+      " درهم"+
+    "</h3>"+
+
+    "<p>"+
+      "📍 <strong>المدينة:</strong> "+
+      escapeHtml(p.city)+
+    "</p>"+
+
+    "<p>"+
+      "🏠 <strong>النوع:</strong> "+
+      escapeHtml(p.type)+
+    "</p>"+
+
+    "<p>"+
+      "🔄 <strong>العملية:</strong> "+
+      escapeHtml(p.operation)+
+    "</p>"+
+
+    "<p style='margin-top:15px'>"+
+      escapeHtml(p.description)+
+    "</p>"+
+
+    "<a "+
+      "class='modal-whatsapp' "+
+      "href='https://wa.me/"+
+      whatsappNumber+
+      "?text="+
+      encodeURIComponent(message)+
+      "' "+
+      "target='_blank' "+
+      "rel='noopener'"+
+    ">"+
+      "📱 تواصل عبر WhatsApp"+
+    "</a>";
+
+  document.getElementById("modal").style.display = "flex";
 }
 
-}
 
-
-if(!p){
-
-return;
-
-}
-
-
-document.getElementById("modalContent").innerHTML =
-
-"<img src='"+p.image+"' alt='"+p.title+"'>"+
-
-"<h2>"+p.title+"</h2>"+
-
-"<h3 style='color:#123e67;margin:8px 0'>"+
-p.price+
-" درهم</h3>"+
-
-"<p>📍 <strong>المدينة:</strong> "+
-p.city+
-"</p>"+
-
-"<p>🏠 <strong>النوع:</strong> "+
-p.type+
-"</p>"+
-
-"<p>🔄 <strong>العملية:</strong> "+
-p.operation+
-"</p>"+
-
-"<p style='margin-top:15px'>"+
-p.description+
-"</p>"+
-
-"<a class='modal-whatsapp' href='https://wa.me/"+
-whatsappNumber+
-"?text="+
-encodeURIComponent(
-"السلام عليكم، مهتم بهذا العقار: "+
-p.title+
-" في "+
-p.city+
-". الثمن: "+
-p.price+
-" درهم."
-)+
-"' target='_blank'>"+
-"📱 تواصل عبر WhatsApp"+
-"</a>";
-
-
-document.getElementById("modal").style.display =
-"flex";
-
-}
-
+/* =========================
+   CLOSE MODAL
+========================= */
 
 function closeModal(){
 
-document.getElementById("modal").style.display =
-"none";
+  document.getElementById("modal").style.display = "none";
 
 }
 
+
+function closeModalOutside(event){
+
+  if(event.target.id === "modal"){
+    closeModal();
+  }
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
 
 function searchProperties(){
 
-var text =
-document.getElementById("searchText")
-.value
-.toLowerCase()
-.trim();
+  var text =
+    document.getElementById("searchText")
+    .value
+    .toLowerCase()
+    .trim();
+
+  var type =
+    document.getElementById("typeFilter")
+    .value;
+
+  var operation =
+    document.getElementById("operationFilter")
+    .value;
+
+  var city =
+    document.getElementById("cityFilter")
+    .value
+    .toLowerCase()
+    .trim();
+
+  var results = [];
+
+  for(var i=0; i<properties.length; i++){
+
+    var p = properties[i];
+
+    var textMatch =
+      text === "" ||
+      p.title.toLowerCase().indexOf(text) !== -1 ||
+      p.description.toLowerCase().indexOf(text) !== -1 ||
+      p.city.toLowerCase().indexOf(text) !== -1 ||
+      p.type.toLowerCase().indexOf(text) !== -1;
+
+    var typeMatch =
+      type === "" ||
+      p.type === type;
+
+    var operationMatch =
+      operation === "" ||
+      p.operation === operation;
+
+    var cityMatch =
+      city === "" ||
+      p.city.toLowerCase().indexOf(city) !== -1;
+
+    if(
+      textMatch &&
+      typeMatch &&
+      operationMatch &&
+      cityMatch
+    ){
+
+      results.push(p);
+
+    }
+
+  }
+
+  showProperties(results);
+
+  document
+    .getElementById("properties")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+}
 
 
-var type =
-document.getElementById("typeFilter")
-.value;
+/* =========================
+   PROPERTY FORM
+========================= */
 
+function openPropertyForm(){
 
-var operation =
-document.getElementById("operationFilter")
-.value;
+  document.getElementById("propertyForm").style.display = "block";
 
-
-var city =
-document.getElementById("cityFilter")
-.value
-.toLowerCase()
-.trim();
-
-
-var results = [];
-
-
-for(var i=0;i<properties.length;i++){
-
-var p = properties[i];
-
-
-var textMatch =
-text === "" ||
-p.title.toLowerCase().indexOf(text) !== -1 ||
-p.description.toLowerCase().indexOf(text) !== -1 ||
-p.city.toLowerCase().indexOf(text) !== -1;
-
-
-var typeMatch =
-type === "" ||
-p.type === type;
-
-
-var operationMatch =
-operation === "" ||
-p.operation === operation;
-
-
-var cityMatch =
-city === "" ||
-p.city.toLowerCase().indexOf(city) !== -1;
-
-
-if(
-textMatch &&
-typeMatch &&
-operationMatch &&
-cityMatch
-){
-
-results.push(p);
+  document.body.style.overflow = "hidden";
 
 }
 
-}
 
+function closePropertyForm(){
 
-showProperties(results);
+  document.getElementById("propertyForm").style.display = "none";
 
-
-document
-.getElementById("properties")
-.scrollIntoView({
-behavior:"smooth"
-});
+  document.body.style.overflow = "";
 
 }
 
+
+/* =========================
+   SEND PROPERTY TO WHATSAPP
+========================= */
+
+function sendPropertyWhatsApp(){
+
+  var name =
+    document.getElementById("ownerName")
+    .value
+    .trim();
+
+  var phone =
+    document.getElementById("ownerPhone")
+    .value
+    .trim();
+
+  var type =
+    document.getElementById("propertyType")
+    .value;
+
+  var operation =
+    document.getElementById("propertyOperation")
+    .value;
+
+  var city =
+    document.getElementById("propertyCity")
+    .value
+    .trim();
+
+  var price =
+    document.getElementById("propertyPrice")
+    .value
+    .trim();
+
+  var description =
+    document.getElementById("propertyDescription")
+    .value
+    .trim();
+
+
+  if(
+    name === "" ||
+    phone === "" ||
+    type === "" ||
+    operation === "" ||
+    city === "" ||
+    price === ""
+  ){
+
+    alert("⚠️ المرجو ملء جميع المعلومات الأساسية.");
+
+    return;
+  }
+
+
+  var message =
+
+    "🏠 طلب إضافة عقار - منصة عقاري\n\n"+
+
+    "👤 الاسم: "+
+    name+
+    "\n"+
+
+    "📱 الهاتف: "+
+    phone+
+    "\n"+
+
+    "🏠 نوع العقار: "+
+    type+
+    "\n"+
+
+    "🔄 العملية: "+
+    operation+
+    "\n"+
+
+    "📍 المدينة: "+
+    city+
+    "\n"+
+
+    "💰 الثمن: "+
+    price+
+    "\n"+
+
+    "📝 الوصف: "+
+    (description || "لم يتم إضافة وصف.");
+
+  var whatsapp =
+
+    "https://wa.me/"+
+    whatsappNumber+
+    "?text="+
+    encodeURIComponent(message);
+
+  window.open(
+    whatsapp,
+    "_blank",
+    "noopener"
+  );
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHtml(text){
+
+  return String(text)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   CLOSE WITH ESC
+========================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      closePropertyForm();
+      closeModal();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
 
 showProperties(properties);
-
 
 </script>
 
